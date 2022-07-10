@@ -4,16 +4,18 @@
         <loc>https://a-t-richard.github.io/</loc>
     </url>
     <url>
-        <loc>https://a-t-richard.github.io/blog/</loc>
-    </url>
-    <url>
         <loc>https://a-t-richard.github.io/contacts/</loc>
         <lastmod>2022-07-09</lastmod>
     </url>
     <url>
-        <loc>https://a-t-richard.github.io/projects/</loc>
+        <loc>https://a-t-richard.github.io/publications/</loc>
     </url>
     <url>
-        <loc>https://a-t-richard.github.io/publications/</loc>
+        <loc>https://a-t-richard.github.io/publications/phdthesis-en/</loc>
+        <lastmod>2021-04-06</lastmod>
+    </url>
+    <url>
+        <loc>https://a-t-richard.github.io/publications/phdthesis-fr/</loc>
+        <lastmod>2021-04-06</lastmod>
     </url>
 </urlset>
