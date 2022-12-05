@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  
+  <link rel="shortcut icon" href="https:&#x2F;&#x2F;a-t-richard.github.io&#x2F;processed_images&#x2F;a8cbdf2e7fa4c9a100.png" type="image/png">
+  <link rel="icon" href="https:&#x2F;&#x2F;a-t-richard.github.io&#x2F;processed_images&#x2F;a8cbdf2e7fa4c9a100.png" type="image/png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta charset="utf-8">
+
+  <!-- Custom header for users, includes custom css or js here -->
+  
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script>
+
+
+<title> Antoine Richard</title>
+
+  
+<!-- CSS -->
+<link rel="stylesheet" href="https://a-t-richard.github.io/styles/styles.css" />
+
+    <title>Blog |  Antoine Richard</title>
+</head>
+
+<body class="bg-white">
+  <!-- Top nav bar -->
+  
+  
+  
+<nav id="header" class="w-full z-10 top-0 shadow-md mx-0">
+  <div id="progress" class="top-0"></div>
+  <!-- <div class="w-full max-w-5xl mx-auto flex flex-wrap items-center justify-between mt-0 py-2  sm:bg-green-900 md:bg-red-900 lg:bg-blue-900 bg-yellow-900"> -->
+  <div class="w-full max-w-4xl mx-auto flex sm:flex-nowrap flex-wrap items-center justify-between mt-0 py-2">
+    <div class="pl-4">
+      <a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold" href="https:&#x2F;&#x2F;a-t-richard.github.io">
+        Antoine Richard
+      </a>
+    </div>
+
+    <div class="w-full flex-grow sm:flex sm:items-center flex-wrap sm:flex-nowrap sm:w-auto sm:block mt-2 sm:mt-0 bg-transparent z-20" id="nav-content">
+      <ul class="list-reset flex flex-wrap sm:justify-end flex-1 items-center">
+          <li class="mr-3 text-sm">
+              <a href=https://a-t-richard.github.io/blog class="inline-block py-2 px-4 text-sky-600 font-bold no-underline">
+                Blog
+              </a>
+            </li>
+            <li class="mr-3 text-sm">
+              <a href=https://a-t-richard.github.io/publications class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4">
+                Publications
+              </a>
+            </li>
+            <li class="mr-3 text-sm">
+            <a href=https://a-t-richard.github.io/#contacts class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4">
+              Contact
+            </a>
+          </li>
+          </ul>
+    </div>
+  </div>
+
+</nav>
+
+<!-- Container -->
+  
+<div class="container max-w-3xl mx-auto px-4">
+  <div class="pt-8 flex flex">
+    <h1 class="grow font-bold font-sans break-normal text-gray-900 text-3xl">Group making using genetic algorithm</h1>
+    <p class="text-sm md:text-base font-normal text-gray-600 py-2">Published 2022-12-02</p>
+  </div>
+  <hr class="border-b-1 border-gray-400 mb-8">
+  
+  <article class="prose prose-indigo prose max-w-3xl">
+    <p><em>The source code to reproduce the results of this blog post can be found <a href="https://github.com/a-t-richard/a-t-richard.github.io/tree/master/static/files/GA-group-making">here</a></em></p>
+<h2 id="introduction">Introduction<a class="zola-anchor" href="#introduction" aria-label="Anchor link for: introduction">🔗</a></h2>
+<p>Making relevant groups of students, for doing some practical exercises
+for example, or in <a href="https://teaching.cornell.edu/teaching-resources/engaging-students/problem-based-learning">problem-based
+learning</a>,
+is one common problem for teachers. Groups must not be too small, or too
+large, and the mean “level” of each group should be as homogeneous as
+possible. We don’t want one group with only students in difficulty and
+one group with only “good grades” students. In addition, students in
+each group should get along with each other, and all participate in
+solving the exercises.</p>
+<p>Generally, we just let the students make their own groups with some size
+limitations, or we just do random groups.</p>
+<p>Obviously, it’s quite sub-optimal.</p>
+<p>A possible way should be to use a metric (grades, IQ, etc.) to evaluate
+students and make groups according to this metric. To illustrate this
+post, I decided to use the “Reading the Mind in the Eyes” Test (RMET)
+proposed by Warrier, Bethlehem, and Baron-Cohen
+(<a href="https://a-t-richard.github.io/blog/ga-group-making/#ref-warrier2017">2017</a>). This test aims to evaluate the
+“emotional”/“social” intelligence of the subjects. According to Riedl et
+al. (<a href="https://a-t-richard.github.io/blog/ga-group-making/#ref-riedl2021">2021</a>), a high social perceptiveness of group
+members is quite correlated to a high collective intelligence. So, why
+not use RMET as a base to construct groups of students?</p>
+<p>Let’s first generate some random RMET scores to represent our students.
+In my case, I’m teaching 18-25 years old students at university.
+According to Kynast et al. (<a href="https://a-t-richard.github.io/blog/ga-group-making/#ref-kynast2021">2021</a>), the mean RMET
+score for this age range is 26 (with a standard deviation of 3.2).</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#65737e;"># set seed to reproduce results
+</span><span>seed &lt;- </span><span style="color:#d08770;">42
+</span><span style="color:#96b5b4;">set.seed</span><span>(seed)
+</span><span>
+</span><span style="color:#65737e;"># generate random RMET scores for each student
+</span><span>nbStudents &lt;- </span><span style="color:#d08770;">20
+</span><span>students &lt;- </span><span style="color:#96b5b4;">data.frame</span><span>(
+</span><span>    </span><span style="color:#bf616a;">id</span><span>=</span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbStudents, 
+</span><span>    </span><span style="color:#bf616a;">rmet</span><span>=</span><span style="color:#96b5b4;">round</span><span>(</span><span style="color:#96b5b4;">rnorm</span><span>(nbStudents, </span><span style="color:#bf616a;">mean</span><span>=</span><span style="color:#d08770;">26</span><span>, </span><span style="color:#bf616a;">sd</span><span>=</span><span style="color:#d08770;">3.2</span><span>))
+</span><span>  )
+</span><span>knitr::</span><span style="color:#bf616a;">kable</span><span>(students, &quot;</span><span style="color:#a3be8c;">pipe</span><span>&quot;, </span><span style="color:#bf616a;">align</span><span>=&quot;</span><span style="color:#a3be8c;">cc</span><span>&quot;)
+</span></code></pre>
+<table><thead><tr><th align="center">id</th><th align="center">rmet</th></tr></thead><tbody>
+<tr><td align="center">1</td><td align="center">30</td></tr>
+<tr><td align="center">2</td><td align="center">24</td></tr>
+<tr><td align="center">3</td><td align="center">27</td></tr>
+<tr><td align="center">4</td><td align="center">28</td></tr>
+<tr><td align="center">5</td><td align="center">27</td></tr>
+<tr><td align="center">6</td><td align="center">26</td></tr>
+<tr><td align="center">7</td><td align="center">31</td></tr>
+<tr><td align="center">8</td><td align="center">26</td></tr>
+<tr><td align="center">9</td><td align="center">32</td></tr>
+<tr><td align="center">10</td><td align="center">26</td></tr>
+<tr><td align="center">11</td><td align="center">30</td></tr>
+<tr><td align="center">12</td><td align="center">33</td></tr>
+<tr><td align="center">13</td><td align="center">22</td></tr>
+<tr><td align="center">14</td><td align="center">25</td></tr>
+<tr><td align="center">15</td><td align="center">26</td></tr>
+<tr><td align="center">16</td><td align="center">28</td></tr>
+<tr><td align="center">17</td><td align="center">25</td></tr>
+<tr><td align="center">18</td><td align="center">17</td></tr>
+<tr><td align="center">19</td><td align="center">18</td></tr>
+<tr><td align="center">20</td><td align="center">30</td></tr>
+</tbody></table>
+<p>Now, we want to distribute these students into several groups in the
+most homogeneous way possible, with a minimum and a maximum number of
+students in each group.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>minStudentsByGroup &lt;- </span><span style="color:#d08770;">3
+</span><span>maxStudentsByGroup &lt;- </span><span style="color:#d08770;">6
+</span></code></pre>
+<p>Based on these minimum and maximum numbers of students by group, we can
+easily know the minimum and maximum numbers of groups we can
+hypothetically create.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#65737e;"># we round to the nearest value up with ceiling function
+</span><span style="color:#65737e;"># because if nbStudents %% maxStudentsByGroup != 0, we need an additionnal group
+</span><span>nbGroupsMin &lt;- </span><span style="color:#96b5b4;">ceiling</span><span>(nbStudents / maxStudentsByGroup)
+</span><span style="color:#96b5b4;">cat</span><span>(nbGroupsMin, &quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>4
+</span></code></pre>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#65737e;"># we don’t care of nbStudents %% minStudentsByGroup in this case
+</span><span style="color:#65737e;"># because groups are not full
+</span><span>nbGroupsMax &lt;- nbStudents %/% minStudentsByGroup
+</span><span style="color:#96b5b4;">cat</span><span>(nbGroupsMax)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>6
+</span></code></pre>
+<p>This problem can be seen as a variation of the <a href="https://en.wikipedia.org/wiki/Knapsack_problem">knapsack
+problem</a>. However,
+instead of choosing which item to put in a unique bag, we want to take
+all the items and distribute them as homogeneously as possible into
+several bags. The knapsack problem is an <a href="https://en.wikipedia.org/wiki/NP-hardness">NP-hard
+problem</a>. So, we can suppose
+that our variation of this problem is also NP-hard. Testing all the
+possible solutions is then not an option, it’s too time-consuming.</p>
+<p>A possible way to solve this problem is to use a “meta-heuristic”
+algorithm. As described by Abdel-Basset, Abdel-Fatah, and Sangaiah
+(<a href="https://a-t-richard.github.io/blog/ga-group-making/#ref-abdelbasset2018">2018</a>), meta-heuristic algorithms compose a
+subclass of algorithms dedicated to exploring the scope of possible
+solutions for a specific problem. They are based on
+<a href="https://en.wikipedia.org/wiki/Heuristic">heuristics</a> on how to explore
+solutions to problems in general, and not on heuristics to solve a
+specific problem (hence the “meta”).</p>
+<p>One of these meta-heuristic algorithms is the Genetic Algorithm. It’s a
+bio-inspired algorithm (<a href="https://a-t-richard.github.io/blog/ga-group-making/#ref-fan2020">Fan et al. 2020</a>) based on the
+<a href="https://en.wikipedia.org/wiki/Evolution">theory of evolution</a> (AKA: the
+most adapted to its environment will survive). The genetic algorithm
+emulates the process of species selection to explore solutions to a
+problem, its main “meta-heuristic” being: it works for species to find
+relevant adaptations to their environments, so why not for algorithms to
+find relevant solutions to a problem?</p>
+<p>The genetic algorithm, as we’ll see in this blog post, is quite adapted
+to explore solutions to problems for which we have several parameters,
+we can evaluate an output score, and for which we want to know the
+combinations of parameters that maximize (or minimize) the output score.</p>
+<p>In our use case, we have several ways to group students (parameters) and
+we want to find the most homogeneous ones (output score). Therefore,
+using a genetic algorithm seems quite adapted. It is also the occasion
+to test, and explain step by step, a genetic algorithm with a practical
+use case.</p>
+<h2 id="naively-apply-basic-genetic-algorithm">Naively apply basic genetic algorithm<a class="zola-anchor" href="#naively-apply-basic-genetic-algorithm" aria-label="Anchor link for: naively-apply-basic-genetic-algorithm">🔗</a></h2>
+<p>To apply a basic genetic algorithm to our problem, we need to define two
+things:</p>
+<ul>
+<li>parameters that describe our problem, also called “solutions”</li>
+<li>our output score to evaluate a solution, also called “fitness”</li>
+</ul>
+<p>The genetic algorithm will then explore possible solutions, evaluated
+their fitness, and try to find the most optimized solutions.</p>
+<h3 id="representing-our-solutions">Representing our solutions<a class="zola-anchor" href="#representing-our-solutions" aria-label="Anchor link for: representing-our-solutions">🔗</a></h3>
+<p>First, let’s define how to represent possible solutions to our problem.
+In the case of a binary genetic algorithm, this means that each
+parameter can only be set at 0 or 1. A solution to our problem can be
+seen as a matrix. Each row corresponds to a group and each column
+corresponds to a student. If a student is affected to a group, the
+corresponding cell is set at 1. Else, the cell is set at 0.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>example &lt;- </span><span style="color:#96b5b4;">c</span><span>(
+</span><span>  </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>,
+</span><span>  </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>,
+</span><span>  </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>,
+</span><span>  </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>,
+</span><span>  </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>,
+</span><span>  </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0
+</span><span>)
+</span><span>
+</span><span>knitr::</span><span style="color:#bf616a;">kable</span><span>(</span><span style="color:#96b5b4;">matrix</span><span>(example, </span><span style="color:#bf616a;">ncol</span><span>=nbStudents, </span><span style="color:#bf616a;">byrow</span><span>=</span><span style="color:#d08770;">TRUE</span><span>), &quot;</span><span style="color:#a3be8c;">pipe</span><span>&quot;)
+</span></code></pre>
+<table><thead><tr><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th></tr></thead><tbody>
+<tr><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+</tbody></table>
+<p>However, the genetic algorithm we’ll use isn’t based on matrices to
+describe solutions but lists. So, we’ll have to switch from matrices to
+lists and from lists to matrices when necessary.</p>
+<p>Besides, there are other ways to represent our solutions. I’ll talk
+about it at the end of this post and explain why I preferred to use this
+representation.</p>
+<h3 id="defining-the-score-of-a-solution">Defining the score of a solution<a class="zola-anchor" href="#defining-the-score-of-a-solution" aria-label="Anchor link for: defining-the-score-of-a-solution">🔗</a></h3>
+<p>Now, let’s define our fitness function that will evaluate the score of
+each solution explored by the genetic algorithm.</p>
+<p>First, we want that a solution describes valid groups: each student is
+associated to only one group, no group is below the minimum number of
+students, and no group is above the maximum number of students. These
+are our “veto” conditions.</p>
+<p>If a solution doesn’t respect these
+conditions, the score will be 0.</p>
+<p>This can be evaluated as follow.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#65737e;"># convert solution to matrix
+</span><span>m &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(example, </span><span style="color:#bf616a;">ncol</span><span>=nbStudents, </span><span style="color:#bf616a;">byrow</span><span>=</span><span style="color:#d08770;">TRUE</span><span>)
+</span><span>
+</span><span style="color:#65737e;"># get number of groups by student
+</span><span>nbGroupsByStudent &lt;- </span><span style="color:#96b5b4;">colSums</span><span>(m)
+</span><span>
+</span><span style="color:#65737e;"># get number of students by group
+</span><span>nbStudentsByGroup &lt;- </span><span style="color:#96b5b4;">rowSums</span><span>(m)
+</span><span>
+</span><span style="color:#65737e;"># remove groups with zero student
+</span><span>nbStudentsByGroup &lt;- nbStudentsByGroup[nbStudentsByGroup != </span><span style="color:#d08770;">0</span><span>]
+</span><span>
+</span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">any</span><span>(nbGroupsByStudent != </span><span style="color:#d08770;">1</span><span>) </span><span style="color:#65737e;"># If any student is associated to zero or several groups
+</span><span>   || </span><span style="color:#96b5b4;">any</span><span>(nbStudentsByGroup &lt; minStudentsByGroup) </span><span style="color:#65737e;"># or if any group is too small
+</span><span>   || </span><span style="color:#96b5b4;">any</span><span>(nbStudentsByGroup &gt; maxStudentsByGroup)){ </span><span style="color:#65737e;"># or if any group is too big
+</span><span>  </span><span style="color:#96b5b4;">cat</span><span>(&quot;</span><span style="color:#a3be8c;">solution not valid</span><span>&quot;)
+</span><span>} </span><span style="color:#b48ead;">else </span><span>{
+</span><span>  </span><span style="color:#96b5b4;">cat</span><span>(&quot;</span><span style="color:#a3be8c;">solution valid</span><span>&quot;)
+</span><span>}
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>solution valid
+</span></code></pre>
+<p>Once we have tested whether a solution is valid or not, we have to
+evaluate its score.</p>
+<p>In our case, we want that the RMET mean score of each group is as
+similar to each other. This way, no group will have an unfair advantage
+over the other groups. We don’t want that the distribution of groups’
+RMET mean scores to be similar to the <a href="https://inequality.org/facts/global-inequality/">current global wealth
+distribution</a>.</p>
+<p>So, first, let’s compute the RMET mean score of each group.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#65737e;"># to keep RMET means in memory
+</span><span>means &lt;- </span><span style="color:#96b5b4;">c</span><span>()
+</span><span>
+</span><span style="color:#65737e;"># for each possible group
+</span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbGroupsMax){
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># get the row corresponding to the group
+</span><span>  studentsInGroup &lt;- m[i, ]
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># get the students&#39; RMET of this group
+</span><span>  rmets &lt;- students[studentsInGroup==</span><span style="color:#d08770;">1</span><span>,]</span><span style="color:#b48ead;">$</span><span>rmet
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># if group not empty
+</span><span>  </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">length</span><span>(rmets) &gt; </span><span style="color:#d08770;">0</span><span>){
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># compute the RMET mean of this group
+</span><span>    mean_rmet &lt;- </span><span style="color:#96b5b4;">mean</span><span>(rmets)
+</span><span>    </span><span style="color:#96b5b4;">cat</span><span>(&quot;</span><span style="color:#a3be8c;">Group</span><span>&quot;, i, &quot;</span><span style="color:#a3be8c;">:</span><span>&quot;,  mean_rmet,&quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;)
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># and keep it in memory
+</span><span>    means[</span><span style="color:#96b5b4;">length</span><span>(means)+</span><span style="color:#d08770;">1</span><span>] &lt;- mean_rmet
+</span><span>  
+</span><span>  }
+</span><span>
+</span><span>}
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Group 1 : 27.25
+</span><span>Group 2 : 27.5
+</span><span>Group 3 : 30.25
+</span><span>Group 4 : 25.25
+</span><span>Group 5 : 22.5
+</span></code></pre>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#65737e;"># compute score as the &quot;macro&quot; mean of RMET means
+</span><span>score &lt;- </span><span style="color:#96b5b4;">mean</span><span>(means)
+</span><span style="color:#96b5b4;">cat</span><span>(&quot;</span><span style="color:#a3be8c;">Macro RMET mean :</span><span>&quot;, score)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Macro RMET mean : 26.55
+</span></code></pre>
+<p>As we can observe in our example, if we only focus on mean RMET scores,
+we could obtain solutions with one group (group 3) with an unfair
+advantage over the other. Mathematically speaking, computing the mean of
+RMET means in our case will always give us the same result. So it’s
+quite useless to compute it, and even more to try to maximize it.</p>
+<p>To obtain RMET scores homogeneously dispatched among groups, it’s the
+standard deviation between RMET mean of each group that we want to
+minimize. However, we’ll keep computing the “macro” mean of RMET means
+by group (just in case), and we’ll subtract the standard deviation of
+RMET means from this “macro” mean. This is generally called a “penalty”.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>penalty &lt;- </span><span style="color:#96b5b4;">sd</span><span>(means)
+</span><span style="color:#96b5b4;">cat</span><span>(&quot;</span><span style="color:#a3be8c;">Fitness =</span><span>&quot;, score,&quot;</span><span style="color:#a3be8c;">-</span><span>&quot;,penalty,&quot;</span><span style="color:#a3be8c;">=</span><span>&quot;, score - penalty)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Fitness = 26.55 - 2.879887 = 23.67011
+</span></code></pre>
+<p>Now, we have all the elements to define our fitness function and test it
+on our example.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#8fa1b3;">fitness</span><span>=</span><span style="color:#b48ead;">function</span><span>(</span><span style="color:#bf616a;">solution</span><span>)
+</span><span>{
+</span><span>  m &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(solution, </span><span style="color:#bf616a;">ncol</span><span>=nbStudents, </span><span style="color:#bf616a;">byrow</span><span>=</span><span style="color:#d08770;">TRUE</span><span>)
+</span><span>
+</span><span>  nbGroupsByStudent &lt;- </span><span style="color:#96b5b4;">colSums</span><span>(m)
+</span><span>  nbStudentsByGroup &lt;- </span><span style="color:#96b5b4;">rowSums</span><span>(m)
+</span><span>  nbStudentsByGroup &lt;- nbStudentsByGroup[nbStudentsByGroup != </span><span style="color:#d08770;">0</span><span>]
+</span><span>  
+</span><span>  </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">any</span><span>(nbGroupsByStudent != </span><span style="color:#d08770;">1</span><span>) 
+</span><span>     || </span><span style="color:#96b5b4;">any</span><span>(nbStudentsByGroup &lt; minStudentsByGroup) 
+</span><span>     || </span><span style="color:#96b5b4;">any</span><span>(nbStudentsByGroup &gt; maxStudentsByGroup))
+</span><span>    </span><span style="color:#b48ead;">return</span><span>(</span><span style="color:#d08770;">0</span><span>)
+</span><span>
+</span><span>  means &lt;- </span><span style="color:#96b5b4;">c</span><span>()
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbGroupsMax){
+</span><span>    studentsInGroup &lt;- m[i, ]
+</span><span>    rmets &lt;- students[studentsInGroup==</span><span style="color:#d08770;">1</span><span>,]</span><span style="color:#b48ead;">$</span><span>rmet
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">length</span><span>(rmets) &gt; </span><span style="color:#d08770;">0</span><span>){
+</span><span>      means[</span><span style="color:#96b5b4;">length</span><span>(means)+</span><span style="color:#d08770;">1</span><span>] &lt;- </span><span style="color:#96b5b4;">mean</span><span>(rmets)
+</span><span>    }
+</span><span>  }
+</span><span>
+</span><span>  score &lt;- </span><span style="color:#96b5b4;">mean</span><span>(means)
+</span><span>  penalty &lt;- </span><span style="color:#96b5b4;">sd</span><span>(means)
+</span><span>  
+</span><span>  </span><span style="color:#b48ead;">return</span><span>(score - penalty)
+</span><span>}
+</span><span>
+</span><span style="color:#96b5b4;">cat</span><span>(</span><span style="color:#bf616a;">fitness</span><span>(example))
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>23.67011
+</span></code></pre>
+<h3 id="exploring-solutions">Exploring solutions<a class="zola-anchor" href="#exploring-solutions" aria-label="Anchor link for: exploring-solutions">🔗</a></h3>
+<p>Now we have defined our solutions and how to evaluate them, we can apply
+a genetic algorithm to our problem.</p>
+<p>To do so, we’ll use the R package <a href="https://luca-scr.github.io/GA/">GA</a>
+proposed by Scrucca (<a href="https://a-t-richard.github.io/blog/ga-group-making/#ref-scrucca2013">2013</a>).</p>
+<p>As input, the <strong>ga</strong> function needs to know:</p>
+<ul>
+<li>the type of genetic algorithm to apply (“binary”, in our case)</li>
+<li>the number of parameters in a solution
+($nbStudents \times nbGroupsMax$, in our case)</li>
+<li>the number of iterations (also called “generations”)</li>
+<li>the number of solutions tested by iteration (also called
+“population”)</li>
+<li>if we want to keep the best solution found in a generation N into
+the generation N+1 (a process called “Elitism”)</li>
+</ul>
+<p>The steps of a genetic algorithm are quite simple:</p>
+<ol>
+<li>the first sample of solutions, the generation 0, is generated</li>
+<li>the fitness of each solution is evaluated</li>
+<li>two solutions are selected according to their fitness score (a step
+called “Selection”)</li>
+<li>these two solutions are mixed up together to generate two new
+solutions (a step called “cross-over”)</li>
+<li>step 3. and 4. are repeated until a new sample of solutions is
+generated</li>
+<li>the process is repeated from step 2. until the desired number of
+iterations is reached</li>
+</ol>
+<p>Let’s then explore solutions to our problem with the genetic algorithm.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">library</span><span>(GA)
+</span><span>
+</span><span>GA=</span><span style="color:#bf616a;">ga</span><span>(
+</span><span>  </span><span style="color:#bf616a;">type</span><span>=&#39;</span><span style="color:#a3be8c;">binary</span><span>&#39;,
+</span><span>  </span><span style="color:#bf616a;">fitness</span><span>=fitness,
+</span><span>  </span><span style="color:#bf616a;">nBits</span><span>=nbStudents*nbGroupsMax,
+</span><span>  </span><span style="color:#bf616a;">maxiter</span><span>=</span><span style="color:#d08770;">1000</span><span>,
+</span><span>  </span><span style="color:#bf616a;">popSize</span><span>=</span><span style="color:#d08770;">1000</span><span>,
+</span><span>  </span><span style="color:#bf616a;">seed</span><span>=seed,
+</span><span>  </span><span style="color:#bf616a;">keepBest</span><span>=</span><span style="color:#d08770;">TRUE</span><span>,
+</span><span>  </span><span style="color:#bf616a;">monitor </span><span>= </span><span style="color:#d08770;">FALSE
+</span><span>)
+</span><span>
+</span><span style="color:#96b5b4;">plot</span><span>(GA, </span><span style="color:#bf616a;">ylim</span><span>=</span><span style="color:#96b5b4;">c</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#96b5b4;">mean</span><span>(students</span><span style="color:#b48ead;">$</span><span>rmet)))
+</span></code></pre>
+<p><img src="/img/test-fitnessFunc-1.png" alt="" /><!-- --></p>
+<p>Aaaaaand, it doesn’t work.</p>
+<p>Even with a high number of solutions and generations, naively applying a
+basic genetic algorithm to our problem seems to not even be able to find
+one valid solution.</p>
+<h3 id="why-it-doesn-t-work">Why it doesn’t work?<a class="zola-anchor" href="#why-it-doesn-t-work" aria-label="Anchor link for: why-it-doesn-t-work">🔗</a></h3>
+<p>There are two main reasons for this failure. The first one is that the
+number of valid group combinations is largely lesser than the number of
+combinations tested by a basic binary genetic algorithm.</p>
+<p>For instance, the number of valid group combinations can be calculated
+as follow.</p>
+<p>$$
+\sum_{G \in \mathcal{G}} \prod_{i=0}^{|G|} C_{nbStudents - \sum_{j=0}^{i-1}g_j}^{g_i}
+$$</p>
+<p>With $\mathcal{G}$ the set of all possible combinations of group sizes
+$G \in \mathcal{G}$, such as $\sum_{i=0}^{i=|G|} g_i = nbStudents$.
+For example, the combination of group sizes {$5, 5, 5, 5, 0, 0$} is in
+$\mathcal{G}$.</p>
+<p>Let’s compute the number of valid group combinations, and the
+intermediate numbers of combinations, for our use case.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">library</span><span>(gtools) </span><span style="color:#65737e;"># to use the &#39;combinations&#39; function
+</span><span style="color:#96b5b4;">library</span><span>(collections) </span><span style="color:#65737e;"># to use the &#39;dict&#39; structure
+</span><span>
+</span><span style="color:#65737e;"># To keep the combinations found for later
+</span><span>diffGroupSizesCombinations &lt;- </span><span style="color:#bf616a;">dict</span><span>()
+</span><span>k &lt;- </span><span style="color:#d08770;">1 </span><span style="color:#65737e;"># to count the number of combinations found
+</span><span>
+</span><span style="color:#65737e;"># to define the different group size possible
+</span><span>diffGroupSize &lt;- minStudentsByGroup</span><span style="color:#b48ead;">:</span><span>maxStudentsByGroup
+</span><span>totNbCombinations &lt;- </span><span style="color:#d08770;">0 </span><span style="color:#65737e;"># to count the total number of valid combinations
+</span><span>
+</span><span style="color:#65737e;"># for each number of group possible
+</span><span style="color:#b48ead;">for</span><span>(i in nbGroupsMin</span><span style="color:#b48ead;">:</span><span>nbGroupsMax){
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># compute the combinations of i groups
+</span><span>  </span><span style="color:#65737e;"># from the different possible group sizes
+</span><span>  c &lt;- </span><span style="color:#bf616a;">combinations</span><span>(
+</span><span>      </span><span style="color:#bf616a;">n</span><span>=</span><span style="color:#96b5b4;">length</span><span>(diffGroupSize), 
+</span><span>      </span><span style="color:#bf616a;">r</span><span>=i,
+</span><span>      </span><span style="color:#bf616a;">v </span><span>= diffGroupSize,
+</span><span>      </span><span style="color:#bf616a;">repeats.allowed </span><span>= </span><span style="color:#d08770;">TRUE
+</span><span>    )
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># for each combination found
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(j in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">nrow</span><span>(c)){
+</span><span>    cj &lt;- c[j, ] </span><span style="color:#65737e;"># the combination
+</span><span>    
+</span><span>    </span><span style="color:#65737e;"># check if the sum of groups’ size
+</span><span>    </span><span style="color:#65737e;"># correspond to the number of students
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">sum</span><span>(cj) == nbStudents){
+</span><span>      </span><span style="color:#96b5b4;">cat</span><span>(&quot;</span><span style="color:#a3be8c;">Group sizes: </span><span>&quot;)
+</span><span>      </span><span style="color:#96b5b4;">cat</span><span>(cj)
+</span><span>      
+</span><span>      </span><span style="color:#65737e;"># keep the combination for later
+</span><span>      diffGroupSizesCombinations</span><span style="color:#b48ead;">$</span><span style="color:#bf616a;">set</span><span>(</span><span style="color:#96b5b4;">as.character</span><span>(k), cj)
+</span><span>      k = k + </span><span style="color:#d08770;">1
+</span><span>      
+</span><span>      </span><span style="color:#65737e;"># compute the number of combination of students
+</span><span>      </span><span style="color:#65737e;"># for configuration of group sizes cj 
+</span><span>      nbCombinations &lt;- </span><span style="color:#d08770;">1.0
+</span><span>      nbStudentsLeft &lt;- nbStudents
+</span><span>      </span><span style="color:#65737e;"># for each group size in cj configuration
+</span><span>      </span><span style="color:#b48ead;">for</span><span>(groupSize in cj){ 
+</span><span>        </span><span style="color:#65737e;"># compute combinations of group size
+</span><span>        </span><span style="color:#65737e;"># from students not grouped yet
+</span><span>        cGroupSize &lt;- </span><span style="color:#bf616a;">combinations</span><span>(</span><span style="color:#bf616a;">n</span><span>=nbStudentsLeft, </span><span style="color:#bf616a;">r</span><span>=groupSize)
+</span><span>        
+</span><span>        </span><span style="color:#65737e;"># multiply with number of combinations found for previous groups
+</span><span>        nbCombinations = nbCombinations * </span><span style="color:#96b5b4;">nrow</span><span>(cGroupSize)
+</span><span>        
+</span><span>        </span><span style="color:#65737e;"># update number of student not grouped yet
+</span><span>        nbStudentsLeft = nbStudentsLeft - groupSize
+</span><span>      }
+</span><span>      </span><span style="color:#96b5b4;">cat</span><span>(&quot;</span><span style="color:#96b5b4;">\t\t</span><span style="color:#a3be8c;">Nb possible combinations: </span><span>&quot;, nbCombinations, &quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;)
+</span><span>      
+</span><span>      </span><span style="color:#65737e;"># add number of combinations found for cj to the total
+</span><span>      totNbCombinations = totNbCombinations + nbCombinations
+</span><span>    }
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>Group sizes: 3 5 6 6        Nb possible combinations: 6518191680
+</span><span>Group sizes: 4 4 6 6        Nb possible combinations: 8147739600
+</span><span>Group sizes: 4 5 5 6        Nb possible combinations: 9777287520
+</span><span>Group sizes: 5 5 5 5        Nb possible combinations: 11732745024
+</span><span>Group sizes: 3 3 3 5 6      Nb possible combinations: 130363833600
+</span><span>Group sizes: 3 3 4 4 6      Nb possible combinations: 162954792000
+</span><span>Group sizes: 3 3 4 5 5      Nb possible combinations: 195545750400
+</span><span>Group sizes: 3 4 4 4 5      Nb possible combinations: 244432188000
+</span><span>Group sizes: 4 4 4 4 4      Nb possible combinations: 305540235000
+</span><span>Group sizes: 3 3 3 3 3 5    Nb possible combinations: 2.607277e+12
+</span><span>Group sizes: 3 3 3 3 4 4    Nb possible combinations: 3.259096e+12
+</span></code></pre>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">cat</span><span>(totNbCombinations)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>6.941385e+12
+</span></code></pre>
+<p>Let’s now compare this number of valid group combinations with the
+number of combinations tested by the genetic algorithm:</p>
+<p>$$
+2^{nbStudents \times nbGroupsMax}
+$$</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">cat</span><span>(</span><span style="color:#d08770;">2</span><span>^(nbStudents*nbGroupsMax), &quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>1.329228e+36
+</span></code></pre>
+<p>If we divide our number of valid group combinations by this number,
+we obtain:</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">cat</span><span>(totNbCombinations / </span><span style="color:#d08770;">2</span><span>^(nbStudents*nbGroupsMax))
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>5.222118e-24
+</span></code></pre>
+<p>We can see that the number of valid group combinations is just a
+very small fraction of all combinations tested by the genetic algorithm.
+This means that the genetic algorithm only has a small chance to find a
+valid group combination from random initial solutions.</p>
+<p>In addition, and this is the second reason for this failure, the valid
+solutions are not “next to each other”. It’s very easy to go from a
+valid solution to a non-valid one. By simply changing a 0 to a 1, we can
+add a student to two groups, or create a too-large group. This means
+that, even with valid initial solutions, the modifications made by the
+genetic algorithm to explore possible solutions have a small chance to
+find another valid solution.</p>
+<h2 id="customizing-a-genetic-algorithm">Customizing a Genetic Algorithm<a class="zola-anchor" href="#customizing-a-genetic-algorithm" aria-label="Anchor link for: customizing-a-genetic-algorithm">🔗</a></h2>
+<p>Fortunately, the different steps of a genetic algorithm are highly
+customizable. We’ll then customize these different steps to reduce the
+scope of solutions tested by the genetic algorithm to only valid group
+combinations.</p>
+<p>In the R package <em>GA</em>, we can customize the following steps:</p>
+<ul>
+<li>Initialization, to Generate an initial population with only valid
+solutions</li>
+<li>Selection, to select the best solutions for “reproduction” (We’ll
+not customize this step. But, if you want to select <a href="https://en.wikipedia.org/wiki/Pareto_efficiency">Pareto
+optimum</a> solutions
+based on several fitness metrics, this is the place)</li>
+<li>Cross-over, to mixup characteristics of two valid solutions to
+create two new valid solutions</li>
+<li>Mutation, to change a characteristic of a valid solution to obtain a
+new valid solution</li>
+</ul>
+<h3 id="initial-population">Initial population<a class="zola-anchor" href="#initial-population" aria-label="Anchor link for: initial-population">🔗</a></h3>
+<p>First of all, we need the genetic algorithm to start with only valid
+solutions. To do so, we’ll use the following function, based on the
+valid combinations of group sizes computed before.</p>
+<p>This function will first choose one random combination $G$ of group
+sizes (for example {$5, 5, 5, 5, 0, 0$}). And then, for each group size
+$g \in G$, the function chooses $g$ students among the students not
+grouped yet.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#8fa1b3;">group_population </span><span>&lt;- </span><span style="color:#b48ead;">function</span><span>(</span><span style="color:#bf616a;">object</span><span>){
+</span><span>  </span><span style="color:#65737e;"># init population with empty matrix
+</span><span>  population &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(
+</span><span>      </span><span style="color:#96b5b4;">rep</span><span>(</span><span style="color:#d08770;">0</span><span>, object</span><span style="color:#b48ead;">@</span><span>nBits*object</span><span style="color:#b48ead;">@</span><span>popSize),
+</span><span>      </span><span style="color:#bf616a;">ncol</span><span>=object</span><span style="color:#b48ead;">@</span><span>nBits,
+</span><span>      </span><span style="color:#bf616a;">nrow</span><span>=object</span><span style="color:#b48ead;">@</span><span>popSize
+</span><span>    )
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># generate each individual of the population
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>object</span><span style="color:#b48ead;">@</span><span>popSize){
+</span><span>    </span><span style="color:#65737e;"># choose one possible combination of group sizes
+</span><span>    k &lt;- </span><span style="color:#96b5b4;">sample</span><span>(</span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>diffGroupSizesCombinations</span><span style="color:#b48ead;">$</span><span style="color:#bf616a;">size</span><span>(), </span><span style="color:#d08770;">1</span><span>)
+</span><span>    groupSizes &lt;- diffGroupSizesCombinations</span><span style="color:#b48ead;">$</span><span style="color:#bf616a;">get</span><span>(</span><span style="color:#96b5b4;">as.character</span><span>(k))
+</span><span>    
+</span><span>    </span><span style="color:#65737e;"># for each group
+</span><span>    studentsNotGroupedYet &lt;- </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbStudents
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(j in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">length</span><span>(groupSizes)){
+</span><span>      </span><span style="color:#65737e;"># choose n students from students not grouped yet
+</span><span>      studentIds &lt;- </span><span style="color:#96b5b4;">sample</span><span>(
+</span><span>          studentsNotGroupedYet,
+</span><span>          groupSizes[j]
+</span><span>        )
+</span><span>      
+</span><span>      </span><span style="color:#65737e;"># for each student selected
+</span><span>      </span><span style="color:#b48ead;">for</span><span>(id in studentIds){
+</span><span>        </span><span style="color:#65737e;"># set student to group j
+</span><span>        population[i, nbStudents * (j-</span><span style="color:#d08770;">1</span><span>) + id] = </span><span style="color:#d08770;">1
+</span><span>        </span><span style="color:#65737e;"># remove student from students not grouped yet
+</span><span>        studentsNotGroupedYet = studentsNotGroupedYet[studentsNotGroupedYet != id]
+</span><span>      }
+</span><span>    }
+</span><span>  }
+</span><span>  
+</span><span>  </span><span style="color:#b48ead;">return</span><span>(population)
+</span><span>}
+</span></code></pre>
+<p>Let’s now test the genetic algorithm with this custom initialization
+function.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>GA=</span><span style="color:#bf616a;">ga</span><span>(
+</span><span>    </span><span style="color:#bf616a;">type</span><span>=&#39;</span><span style="color:#a3be8c;">binary</span><span>&#39;,
+</span><span>    </span><span style="color:#bf616a;">fitness</span><span>=fitness,
+</span><span>    </span><span style="color:#bf616a;">nBits</span><span>=nbStudents*nbGroupsMax,
+</span><span>    </span><span style="color:#bf616a;">population </span><span>= group_population,
+</span><span>    </span><span style="color:#bf616a;">maxiter</span><span>=</span><span style="color:#d08770;">10</span><span>,
+</span><span>    </span><span style="color:#bf616a;">popSize</span><span>=</span><span style="color:#d08770;">100</span><span>,
+</span><span>    </span><span style="color:#bf616a;">seed</span><span>=seed,
+</span><span>    </span><span style="color:#bf616a;">keepBest</span><span>=</span><span style="color:#d08770;">TRUE</span><span>,
+</span><span>    </span><span style="color:#bf616a;">monitor </span><span>= </span><span style="color:#d08770;">FALSE
+</span><span>  )
+</span><span>
+</span><span style="color:#96b5b4;">plot</span><span>(GA, </span><span style="color:#bf616a;">ylim</span><span>=</span><span style="color:#96b5b4;">c</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#96b5b4;">mean</span><span>(students</span><span style="color:#b48ead;">$</span><span>rmet)))
+</span></code></pre>
+<p><img src="/img/test-popFunc-1.png" alt="" /><!-- --></p>
+<p>We can observe that the first generation of solutions, the one generated
+with our custom function, are valid solutions. However, we can also see
+that the median score directly drop to zero at the second step of the
+genetic algorithm. This means that more than half of the solutions
+created from the initial solutions are not valid. It confirms our second
+assumption about why a basic binary genetic algorithm failed to solve
+our problem.</p>
+<h3 id="cross-over-best-solutions">Cross-over best solutions<a class="zola-anchor" href="#cross-over-best-solutions" aria-label="Anchor link for: cross-over-best-solutions">🔗</a></h3>
+<p>Now we have valid initial solutions, we need to find a way to combine
+the characteristics of two “parents” valid solutions to generate two
+“children” solutions which:</p>
+<ul>
+<li>are also valid solutions</li>
+<li>keep sub-characteristics of the two “parents” solutions</li>
+</ul>
+<p>This step is called “cross-over” and it’s inspired by <a href="https://en.wikipedia.org/wiki/Chromosomal_crossover">chromosomes’
+cross-over</a> (even
+if, in biology, cross-over occurs between two chromosomes of the same
+individual and not between two chromosomes of two distinct individuals).</p>
+<p>We’ll see that, in our case, it’s a tricky step to customize.</p>
+<p>Let’s take an example of two valid solutions that we’ll use as
+“parents”.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>ex_parent1 &lt;- example
+</span><span>knitr::</span><span style="color:#bf616a;">kable</span><span>(</span><span style="color:#96b5b4;">matrix</span><span>(ex_parent1, </span><span style="color:#bf616a;">ncol</span><span>=nbStudents, </span><span style="color:#bf616a;">byrow</span><span>=</span><span style="color:#d08770;">TRUE</span><span>), &quot;</span><span style="color:#a3be8c;">pipe</span><span>&quot;)
+</span></code></pre>
+<table><thead><tr><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th></tr></thead><tbody>
+<tr><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+</tbody></table>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">cat</span><span>(</span><span style="color:#bf616a;">fitness</span><span>(ex_parent1), &quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>23.67011
+</span></code></pre>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>ex_parent2 &lt;- </span><span style="color:#96b5b4;">c</span><span>(
+</span><span>  </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>,
+</span><span>  </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>,
+</span><span>  </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>,
+</span><span>  </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>,
+</span><span>  </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>,
+</span><span>  </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">0
+</span><span>)
+</span><span>knitr::</span><span style="color:#bf616a;">kable</span><span>(</span><span style="color:#96b5b4;">matrix</span><span>(ex_parent2, </span><span style="color:#bf616a;">ncol</span><span>=nbStudents, </span><span style="color:#bf616a;">byrow</span><span>=</span><span style="color:#d08770;">TRUE</span><span>), &quot;</span><span style="color:#a3be8c;">pipe</span><span>&quot;)
+</span></code></pre>
+<table><thead><tr><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th></tr></thead><tbody>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td></tr>
+<tr><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+</tbody></table>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">cat</span><span>(</span><span style="color:#bf616a;">fitness</span><span>(ex_parent2))
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>24.39361
+</span></code></pre>
+<p>In a basic binary genetic algorithm, as illustrated in the figure below
+proposed by Alamri and Alharbi (<a href="https://a-t-richard.github.io/blog/ga-group-making/#ref-alamri2020">2020</a>), the
+“cross-over” function will generally split the “parents” in two and
+generate the “children” with the four sub-parts.</p>
+<p><img src="/img/Example-of-GA-individual-crossover.png" alt="" /></p>
+<p>Let’s apply this process to our example.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>split &lt;- </span><span style="color:#96b5b4;">length</span><span>(ex_parent1) %/% </span><span style="color:#d08770;">2
+</span><span>ex_child1 &lt;- </span><span style="color:#96b5b4;">append</span><span>(ex_parent1[</span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>split], ex_parent2[(split+</span><span style="color:#d08770;">1</span><span>)</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">length</span><span>(ex_parent1)])
+</span><span>knitr::</span><span style="color:#bf616a;">kable</span><span>(</span><span style="color:#96b5b4;">matrix</span><span>(ex_child1, </span><span style="color:#bf616a;">ncol</span><span>=nbStudents, </span><span style="color:#bf616a;">byrow</span><span>=</span><span style="color:#d08770;">TRUE</span><span>), &quot;</span><span style="color:#a3be8c;">pipe</span><span>&quot;)
+</span></code></pre>
+<table><thead><tr><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th></tr></thead><tbody>
+<tr><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+</tbody></table>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">cat</span><span>(</span><span style="color:#bf616a;">fitness</span><span>(ex_child1), &quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>0
+</span></code></pre>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>ex_child2 &lt;- </span><span style="color:#96b5b4;">append</span><span>(ex_parent2[</span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>split], ex_parent1[(split+</span><span style="color:#d08770;">1</span><span>)</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">length</span><span>(ex_parent1)])
+</span><span>knitr::</span><span style="color:#bf616a;">kable</span><span>(</span><span style="color:#96b5b4;">matrix</span><span>(ex_child2, </span><span style="color:#bf616a;">ncol</span><span>=nbStudents, </span><span style="color:#bf616a;">byrow</span><span>=</span><span style="color:#d08770;">TRUE</span><span>), &quot;</span><span style="color:#a3be8c;">pipe</span><span>&quot;)
+</span></code></pre>
+<table><thead><tr><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th></tr></thead><tbody>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td></tr>
+<tr><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+</tbody></table>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">cat</span><span>(</span><span style="color:#bf616a;">fitness</span><span>(ex_child2))
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>0
+</span></code></pre>
+<p>We can observe that the generated “children” solutions, with this
+method, are not valid at all. This explains the direct decrease in
+fitness scores that we observed before.</p>
+<p>To customize the cross-over function, we need to understand the
+characteristics of a solution that we want “children” solutions to
+inherit from their “parents” solutions.</p>
+<p>In our use case, we have two main characteristics that “children”
+solutions could inherit from their “parents” solutions:</p>
+<ul>
+<li>the number of students by group</li>
+<li>how the students are grouped together</li>
+</ul>
+<p>To simplify the cross-over process, let’s keep the number of students
+from parents to children (children1 will have the same number of
+students in each group than parent1, and so on for parent2). This
+characteristic allows us to be sure to generate solutions with valid
+group sizes.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#65737e;"># initialize child with a list of zero
+</span><span>ex_child1 &lt;- </span><span style="color:#96b5b4;">rep</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#96b5b4;">length</span><span>(ex_parent1))
+</span><span>
+</span><span style="color:#65737e;"># get groups of students in parent1
+</span><span>groups &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(ex_parent1, </span><span style="color:#bf616a;">ncol </span><span>= nbStudents, </span><span style="color:#bf616a;">byrow </span><span>= </span><span style="color:#d08770;">TRUE</span><span>)
+</span><span>
+</span><span style="color:#65737e;"># compute the number of students by groups
+</span><span>nbStudentsByGroup &lt;- </span><span style="color:#96b5b4;">rowSums</span><span>(groups)
+</span><span style="color:#65737e;"># remove empty groups
+</span><span>nbStudentsByGroup &lt;- nbStudentsByGroup[nbStudentsByGroup != </span><span style="color:#d08770;">0</span><span>]
+</span></code></pre>
+<p>Concerning how the students are grouped together, we can first observe
+that the composition of the last group is implied by the other groups.
+So we can focus on the composition of $nbGroups - 1$ groups.</p>
+<p>To keep a sub-part of students grouped together in the first parent, we
+can simply keep the composition of $(nbGroups−1)/2$ random
+groups from this first parent.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#65737e;"># compute the number of groups will keep from parent 1
+</span><span>nbGroupKept &lt;- (</span><span style="color:#96b5b4;">length</span><span>(nbStudentsByGroup) - </span><span style="color:#d08770;">1</span><span>) %/% </span><span style="color:#d08770;">2
+</span><span>
+</span><span style="color:#65737e;"># choose random groups in parent1 to keep in child
+</span><span>groupKeptIds &lt;- </span><span style="color:#96b5b4;">sample</span><span>(</span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">length</span><span>(nbStudentsByGroup), nbGroupKept, </span><span style="color:#bf616a;">replace </span><span>= </span><span style="color:#d08770;">FALSE</span><span>)
+</span><span>
+</span><span style="color:#65737e;"># to trace the groups not keept from parent1
+</span><span>groupIdsLeft &lt;- </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">length</span><span>(nbStudentsByGroup)
+</span><span>
+</span><span style="color:#65737e;"># to trace the students not grouped yet
+</span><span>studentIdsLeft &lt;-</span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbStudents
+</span><span>
+</span><span style="color:#65737e;"># for each group choose in parent1
+</span><span style="color:#b48ead;">for</span><span>(groupKeptId in groupKeptIds){
+</span><span>  </span><span style="color:#65737e;"># get the corresponding row
+</span><span>  groupKept &lt;- groups[groupKeptId,]
+</span><span>  </span><span style="color:#65737e;"># get the students in the group
+</span><span>  studentIds &lt;- </span><span style="color:#96b5b4;">which</span><span>(groupKept == </span><span style="color:#d08770;">1</span><span>)
+</span><span>  </span><span style="color:#65737e;"># for each student
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(studentId in studentIds){
+</span><span>    </span><span style="color:#65737e;"># set the corresponding cell at 1 in the child 
+</span><span>    ex_child1[nbStudents * (groupKeptId-</span><span style="color:#d08770;">1</span><span>) + studentId] = </span><span style="color:#d08770;">1
+</span><span>    </span><span style="color:#65737e;"># remove the student from the list of students not grouped yet
+</span><span>    studentIdsLeft = studentIdsLeft[studentIdsLeft != studentId]
+</span><span>  }
+</span><span>  </span><span style="color:#65737e;"># remove group from groups not completed yet
+</span><span>  groupIdsLeft = groupIdsLeft[groupIdsLeft != groupKeptId]
+</span><span>}
+</span><span>
+</span><span>knitr::</span><span style="color:#bf616a;">kable</span><span>(</span><span style="color:#96b5b4;">matrix</span><span>(ex_child1, </span><span style="color:#bf616a;">ncol</span><span>=nbStudents, </span><span style="color:#bf616a;">byrow</span><span>=</span><span style="color:#d08770;">TRUE</span><span>), &quot;</span><span style="color:#a3be8c;">pipe</span><span>&quot;)
+</span></code></pre>
+<table><thead><tr><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th></tr></thead><tbody>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+</tbody></table>
+<p>Then, and it’s the tricky part, we have to get some characteristics from
+parent 2. To do so, we can search, for each group not completed yet, for
+a subset of students that are grouped together in the second parent (or
+several subsets of students grouped together in the second parent until
+obtaining enough students).</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>groupsInParent2 &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(ex_parent2, </span><span style="color:#bf616a;">ncol </span><span>= nbStudents, </span><span style="color:#bf616a;">byrow </span><span>= </span><span style="color:#d08770;">TRUE</span><span>)
+</span><span>studentsByGroupsInParent2 &lt;- </span><span style="color:#96b5b4;">rowSums</span><span>(groupsInParent2)
+</span><span>nbGroupsInParent2 &lt;- </span><span style="color:#96b5b4;">length</span><span>(studentsByGroupsInParent2[studentsByGroupsInParent2 != </span><span style="color:#d08770;">0</span><span>])
+</span><span>
+</span><span style="color:#65737e;"># for the (nbStudents - 1) / 2 groups not completed yet
+</span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#96b5b4;">length</span><span>(groupIdsLeft) &gt; </span><span style="color:#d08770;">1</span><span>){
+</span><span>  </span><span style="color:#65737e;"># choose a group
+</span><span>  groupId &lt;- </span><span style="color:#96b5b4;">sample</span><span>(groupIdsLeft, </span><span style="color:#d08770;">1</span><span>)
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># get the size of the group in parent 1
+</span><span>  groupSize &lt;- nbStudentsByGroup[groupId]
+</span><span>
+</span><span>  </span><span style="color:#65737e;"># while the corresponding group in child is not completed
+</span><span>  </span><span style="color:#b48ead;">while</span><span>(groupSize &gt; </span><span style="color:#d08770;">0</span><span>){
+</span><span>    </span><span style="color:#65737e;"># get a random group g2 in parent 2
+</span><span>    groupIdInParent2 &lt;- </span><span style="color:#96b5b4;">sample</span><span>(</span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbGroupsInParent2, </span><span style="color:#d08770;">1</span><span>)
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># get the students in the group g2
+</span><span>    studentIds &lt;- </span><span style="color:#96b5b4;">which</span><span>(groupsInParent2[groupIdInParent2, ] == </span><span style="color:#d08770;">1</span><span>)
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># get the intersection between g2 and the students not grouped yet in the child
+</span><span>    studentSelectedIds &lt;- </span><span style="color:#96b5b4;">intersect</span><span>(studentIds, studentIdsLeft)
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># get a subset of this intersection if necessary
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">length</span><span>(studentSelectedIds) &gt; groupSize)
+</span><span>      studentSelectedIds &lt;- </span><span style="color:#96b5b4;">sample</span><span>(studentSelectedIds, groupSize, </span><span style="color:#bf616a;">replace </span><span>= </span><span style="color:#d08770;">FALSE</span><span>)
+</span><span>   
+</span><span>   </span><span style="color:#65737e;"># complete the child with students of the intersection   
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(studentId in studentSelectedIds){
+</span><span>      ex_child1[nbStudents * (groupId-</span><span style="color:#d08770;">1</span><span>) + studentId] = </span><span style="color:#d08770;">1
+</span><span>      studentIdsLeft = studentIdsLeft[studentIdsLeft != studentId]
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># to know if we need more students to complete the group
+</span><span>    groupSize = groupSize - </span><span style="color:#96b5b4;">length</span><span>(studentSelectedIds)
+</span><span>  }
+</span><span>  groupIdsLeft = groupIdsLeft[groupIdsLeft != groupId]
+</span><span>}
+</span><span>
+</span><span>knitr::</span><span style="color:#bf616a;">kable</span><span>(</span><span style="color:#96b5b4;">matrix</span><span>(ex_child1, </span><span style="color:#bf616a;">ncol</span><span>=nbStudents, </span><span style="color:#bf616a;">byrow</span><span>=</span><span style="color:#d08770;">TRUE</span><span>), &quot;</span><span style="color:#a3be8c;">pipe</span><span>&quot;)
+</span></code></pre>
+<table><thead><tr><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th></tr></thead><tbody>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+</tbody></table>
+<p>Finally, now we have $nbGroups − 1$ completed, we just
+have to complete the last group with students not grouped yet.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#b48ead;">for</span><span>(studentId in studentIdsLeft){
+</span><span>  groupId &lt;- groupIdsLeft[</span><span style="color:#d08770;">1</span><span>]
+</span><span>  ex_child1[nbStudents * (groupId-</span><span style="color:#d08770;">1</span><span>) + studentId] = </span><span style="color:#d08770;">1
+</span><span>}
+</span><span>
+</span><span>knitr::</span><span style="color:#bf616a;">kable</span><span>(</span><span style="color:#96b5b4;">matrix</span><span>(ex_child1, </span><span style="color:#bf616a;">ncol</span><span>=nbStudents, </span><span style="color:#bf616a;">byrow</span><span>=</span><span style="color:#d08770;">TRUE</span><span>), &quot;</span><span style="color:#a3be8c;">pipe</span><span>&quot;)
+</span></code></pre>
+<table><thead><tr><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th><th align="right"></th></tr></thead><tbody>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td><td align="right"><strong>1</strong></td></tr>
+<tr><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td><td align="right">0</td></tr>
+</tbody></table>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">cat</span><span>(</span><span style="color:#bf616a;">fitness</span><span>(ex_child1))
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>23.5117
+</span></code></pre>
+<p>In this way, we keep the subsets of students grouped together in both
+“parents”, while keeping a valid number of students in each group.</p>
+<p>This gives us the following function.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#8fa1b3;">group_crossover </span><span>= </span><span style="color:#b48ead;">function</span><span>(</span><span style="color:#bf616a;">object</span><span>, </span><span style="color:#bf616a;">parents</span><span>){
+</span><span>  </span><span style="color:#65737e;"># get parents
+</span><span>  parents &lt;- object</span><span style="color:#b48ead;">@</span><span>population[parents,,drop = </span><span style="color:#d08770;">FALSE</span><span>]
+</span><span>  </span><span style="color:#65737e;"># get number of paremeters in parents
+</span><span>  n &lt;- </span><span style="color:#96b5b4;">ncol</span><span>(parents) 
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># initialize children with matrice of zeros
+</span><span>  children &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(</span><span style="color:#96b5b4;">rep</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#d08770;">2</span><span>*n), </span><span style="color:#bf616a;">nrow </span><span>= </span><span style="color:#d08770;">2</span><span>, </span><span style="color:#bf616a;">ncol </span><span>= n)
+</span><span>  </span><span style="color:#65737e;"># initialize children fitness at NA
+</span><span>  </span><span style="color:#65737e;"># (this will force GA function to compute fitness for the children)
+</span><span>  childrenFitness &lt;- </span><span style="color:#96b5b4;">rep</span><span>(</span><span style="color:#d08770;">NA</span><span>, </span><span style="color:#d08770;">2</span><span>)
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># for each children to generate
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">nrow</span><span>(children)){
+</span><span>
+</span><span>    </span><span style="color:#65737e;">## STEP 1: get group sizes from parent 1 ##
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># get parent1
+</span><span>    parent1 &lt;- parents[i,]
+</span><span>    </span><span style="color:#65737e;"># get groups of students in parent1
+</span><span>    groups &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(parent1, </span><span style="color:#bf616a;">ncol </span><span>= nbStudents, </span><span style="color:#bf616a;">byrow </span><span>= </span><span style="color:#d08770;">TRUE</span><span>)
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># compute the number of students by groups
+</span><span>    nbStudentsByGroup &lt;- </span><span style="color:#96b5b4;">rowSums</span><span>(groups)
+</span><span>    </span><span style="color:#65737e;"># remove empty groups
+</span><span>    nbStudentsByGroup &lt;- nbStudentsByGroup[nbStudentsByGroup != </span><span style="color:#d08770;">0</span><span>]
+</span><span>    
+</span><span>    </span><span style="color:#65737e;">## STEP 2: get groups structure from parent 1  ##
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># compute the number of groups will keep from parent 1
+</span><span>    nbGroupKept &lt;- (</span><span style="color:#96b5b4;">length</span><span>(nbStudentsByGroup) - </span><span style="color:#d08770;">1</span><span>) %/% </span><span style="color:#d08770;">2
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># choose random groups in parent1 to keep in child
+</span><span>    groupKeptIds &lt;- </span><span style="color:#96b5b4;">sample</span><span>(</span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">length</span><span>(nbStudentsByGroup), nbGroupKept, </span><span style="color:#bf616a;">replace </span><span>= </span><span style="color:#d08770;">FALSE</span><span>)
+</span><span>    
+</span><span>    </span><span style="color:#65737e;"># to trace the groups not keept from parent1
+</span><span>    groupIdsLeft &lt;- </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">length</span><span>(nbStudentsByGroup)
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># to trace the students not grouped yet
+</span><span>    studentIdsLeft &lt;-</span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbStudents
+</span><span>    
+</span><span>    </span><span style="color:#65737e;"># for each group choosen in parent1
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(groupKeptId in groupKeptIds){
+</span><span>      </span><span style="color:#65737e;"># get the corresponding row
+</span><span>      groupKept &lt;- groups[groupKeptId,]
+</span><span>      </span><span style="color:#65737e;"># get the students in the group
+</span><span>      studentIds &lt;- </span><span style="color:#96b5b4;">which</span><span>(groupKept == </span><span style="color:#d08770;">1</span><span>)
+</span><span>      </span><span style="color:#65737e;"># for each student
+</span><span>      </span><span style="color:#b48ead;">for</span><span>(studentId in studentIds){
+</span><span>          </span><span style="color:#65737e;"># set the corresponding cell at 1 in the child 
+</span><span>        children[i, nbStudents * (groupKeptId-</span><span style="color:#d08770;">1</span><span>) + studentId] = </span><span style="color:#d08770;">1
+</span><span>        </span><span style="color:#65737e;"># remove the student from the list of students not grouped yet
+</span><span>          studentIdsLeft = studentIdsLeft[studentIdsLeft != studentId]
+</span><span>      }
+</span><span>      </span><span style="color:#65737e;"># remove group from groups not completed yet
+</span><span>      groupIdsLeft = groupIdsLeft[groupIdsLeft != groupKeptId]
+</span><span>    }
+</span><span>    
+</span><span>
+</span><span>    </span><span style="color:#65737e;">## STEP 3: get groups structure from parent 2 ##
+</span><span>
+</span><span>    </span><span style="color:#65737e;"># get parent 2
+</span><span>    parent2 &lt;- </span><span style="color:#b48ead;">if</span><span>(i==</span><span style="color:#d08770;">1</span><span>) parents[</span><span style="color:#d08770;">2</span><span>,] </span><span style="color:#b48ead;">else</span><span> parents[</span><span style="color:#d08770;">1</span><span>,]
+</span><span>    groupsInParent2 &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(parent2, </span><span style="color:#bf616a;">ncol </span><span>= nbStudents, </span><span style="color:#bf616a;">byrow </span><span>= </span><span style="color:#d08770;">TRUE</span><span>)
+</span><span>    studentsByGroupsInParent2 &lt;- </span><span style="color:#96b5b4;">rowSums</span><span>(groupsInParent2)
+</span><span>    nbGroupsInParent2 &lt;- </span><span style="color:#96b5b4;">length</span><span>(studentsByGroupsInParent2[studentsByGroupsInParent2 != </span><span style="color:#d08770;">0</span><span>])
+</span><span>    
+</span><span>    </span><span style="color:#65737e;"># for the (nbStudents - 1) / 2 groups not completed yet
+</span><span>    </span><span style="color:#b48ead;">while</span><span>(</span><span style="color:#96b5b4;">length</span><span>(groupIdsLeft) &gt; </span><span style="color:#d08770;">1</span><span>){
+</span><span>      </span><span style="color:#65737e;"># choose a group
+</span><span>      groupId &lt;- </span><span style="color:#96b5b4;">sample</span><span>(groupIdsLeft, </span><span style="color:#d08770;">1</span><span>)
+</span><span>      
+</span><span>      </span><span style="color:#65737e;"># get the size of the group in parent 1
+</span><span>      groupSize &lt;- nbStudentsByGroup[groupId]
+</span><span>
+</span><span>      </span><span style="color:#65737e;"># while the corresponding group in child is not completed
+</span><span>      </span><span style="color:#b48ead;">while</span><span>(groupSize &gt; </span><span style="color:#d08770;">0</span><span>){
+</span><span>          </span><span style="color:#65737e;"># get a random group g2 in parent 2
+</span><span>        groupIdInParent2 &lt;- </span><span style="color:#96b5b4;">sample</span><span>(</span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbGroupsInParent2, </span><span style="color:#d08770;">1</span><span>)
+</span><span>
+</span><span>        </span><span style="color:#65737e;"># get the students in the group g2
+</span><span>        studentIds &lt;- </span><span style="color:#96b5b4;">which</span><span>(groupsInParent2[groupIdInParent2, ] == </span><span style="color:#d08770;">1</span><span>)
+</span><span>
+</span><span>          </span><span style="color:#65737e;"># get the intersection between g2 and the students not grouped yet in the child
+</span><span>        studentSelectedIds &lt;- </span><span style="color:#96b5b4;">intersect</span><span>(studentIds, studentIdsLeft)
+</span><span>
+</span><span>          </span><span style="color:#65737e;"># get a subset of this intersection if necessary
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">length</span><span>(studentSelectedIds) &gt; groupSize)
+</span><span>          studentSelectedIds &lt;- </span><span style="color:#96b5b4;">sample</span><span>(studentSelectedIds, groupSize, </span><span style="color:#bf616a;">replace </span><span>= </span><span style="color:#d08770;">FALSE</span><span>)
+</span><span>       
+</span><span>       </span><span style="color:#65737e;"># complete the child with students of the intersection   
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(studentId in studentSelectedIds){
+</span><span>          children[i, nbStudents * (groupId-</span><span style="color:#d08770;">1</span><span>) + studentId] = </span><span style="color:#d08770;">1
+</span><span>          studentIdsLeft = studentIdsLeft[studentIdsLeft != studentId]
+</span><span>        }
+</span><span>
+</span><span>          </span><span style="color:#65737e;"># to know if we need more students to complete the group
+</span><span>        groupSize = groupSize - </span><span style="color:#96b5b4;">length</span><span>(studentSelectedIds)
+</span><span>      }
+</span><span>      groupIdsLeft = groupIdsLeft[groupIdsLeft != groupId]
+</span><span>    }
+</span><span>    
+</span><span>    </span><span style="color:#65737e;">## STEP 4: complete last group with students not grouped yet  ##
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(studentId in studentIdsLeft){
+</span><span>      groupId &lt;- groupIdsLeft[</span><span style="color:#d08770;">1</span><span>]
+</span><span>      children[i, nbStudents * (groupId-</span><span style="color:#d08770;">1</span><span>) + studentId] = </span><span style="color:#d08770;">1
+</span><span>    }
+</span><span>  }
+</span><span>  
+</span><span>  </span><span style="color:#b48ead;">return</span><span>(</span><span style="color:#b48ead;">list</span><span>(</span><span style="color:#bf616a;">children</span><span>=children, </span><span style="color:#bf616a;">fitness</span><span>=childrenFitness))
+</span><span>}
+</span></code></pre>
+<p>Let’s try the genetic algorithm with this custom cross-over function, in
+combination with our custom initialization function.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>GA=</span><span style="color:#bf616a;">ga</span><span>(
+</span><span>    </span><span style="color:#bf616a;">type</span><span>=&#39;</span><span style="color:#a3be8c;">binary</span><span>&#39;,
+</span><span>    </span><span style="color:#bf616a;">fitness</span><span>=fitness,
+</span><span>    </span><span style="color:#bf616a;">nBits</span><span>=nbStudents*nbGroupsMax,
+</span><span>    </span><span style="color:#bf616a;">population </span><span>= group_population,
+</span><span>    </span><span style="color:#bf616a;">crossover </span><span>= group_crossover,
+</span><span>    </span><span style="color:#bf616a;">maxiter</span><span>=</span><span style="color:#d08770;">10</span><span>,
+</span><span>    </span><span style="color:#bf616a;">popSize</span><span>=</span><span style="color:#d08770;">100</span><span>,
+</span><span>    </span><span style="color:#bf616a;">seed</span><span>=seed,
+</span><span>    </span><span style="color:#bf616a;">keepBest</span><span>=</span><span style="color:#d08770;">TRUE</span><span>,
+</span><span>    </span><span style="color:#bf616a;">monitor</span><span>=</span><span style="color:#d08770;">FALSE
+</span><span>  )
+</span><span>
+</span><span style="color:#96b5b4;">plot</span><span>(GA, </span><span style="color:#bf616a;">ylim</span><span>=</span><span style="color:#96b5b4;">c</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#96b5b4;">mean</span><span>(students</span><span style="color:#b48ead;">$</span><span>rmet)))
+</span></code></pre>
+<p><img src="/img/test-coFunc-1.png" alt="" /><!-- --></p>
+<p>We can observe that the median of fitness scores doesn’t directly drop
+to zero after the first generation. Moreover, the best solutions
+increase generation after generation. However, the mean fitness score
+still decreases generation after generation.</p>
+<p>This is due to the mutations applied by the genetic algorithm on the
+solutions generated by our cross-over function. As introduced before, in
+our problem it’s easy to obtain a non-valid solution by simply changing
+one parameter.</p>
+<h3 id="mutate-solutions">Mutate solutions<a class="zola-anchor" href="#mutate-solutions" aria-label="Anchor link for: mutate-solutions">🔗</a></h3>
+<p>The last step we need to customize is the mutation step.</p>
+<p>The idea of this step is to apply, once children are created, a little
+modification to generate more diversity in the solutions tested. Without
+mutation, there is a risk that the genetic algorithm stays on local
+optimum solutions, even with the cross-over step.</p>
+<p>In a basic binary genetic algorithm, a mutation consists to change the
+value of one random parameter from 0 to 1, or from 1 to 0. However,
+applying this kind of mutation to a valid solution to our problem can
+easily lead to a non-valid solution. For example, it could set a student
+to two different groups or no group at all, or simply create groups too
+small or too big.</p>
+<p>In our case, the idea is simply to choose two random students from two
+different groups and exchange them.</p>
+<p>To do so, we’ll use the following function. It chooses two random
+groups, then one random student in each of these two groups. Then, it
+updates the solution to correspond to an exchange of the two selected
+students.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#8fa1b3;">group_mutation </span><span>&lt;- </span><span style="color:#b48ead;">function</span><span>(</span><span style="color:#bf616a;">object</span><span>, </span><span style="color:#bf616a;">solution</span><span>){
+</span><span>  </span><span style="color:#65737e;"># get the solution to mutate
+</span><span>  mutate &lt;- solution &lt;- </span><span style="color:#96b5b4;">as.vector</span><span>(object</span><span style="color:#b48ead;">@</span><span>population[solution,])
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># transform to matrices to get groups
+</span><span>  groups &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(solution, </span><span style="color:#bf616a;">ncol </span><span>= nbStudents, </span><span style="color:#bf616a;">byrow </span><span>= </span><span style="color:#d08770;">TRUE</span><span>)
+</span><span>  </span><span style="color:#65737e;"># remove empty groups (useless)
+</span><span>  groups &lt;- groups[</span><span style="color:#96b5b4;">rowSums</span><span>(groups) != </span><span style="color:#d08770;">0</span><span>, ]
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># sample two random groups
+</span><span>  selectedGroupIds &lt;- </span><span style="color:#96b5b4;">sample</span><span>(</span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">nrow</span><span>(groups), </span><span style="color:#d08770;">2</span><span>, </span><span style="color:#bf616a;">replace </span><span>= </span><span style="color:#d08770;">FALSE</span><span>)
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># select students to exchange
+</span><span>  group1 &lt;- selectedGroupIds[</span><span style="color:#d08770;">1</span><span>]
+</span><span>  student1 &lt;- </span><span style="color:#96b5b4;">sample</span><span>(</span><span style="color:#96b5b4;">which</span><span>(groups[group1,] == </span><span style="color:#d08770;">1</span><span>), </span><span style="color:#d08770;">1</span><span>)
+</span><span>  group2 &lt;- selectedGroupIds[</span><span style="color:#d08770;">2</span><span>]
+</span><span>  student2 &lt;- </span><span style="color:#96b5b4;">sample</span><span>(</span><span style="color:#96b5b4;">which</span><span>(groups[group2,] == </span><span style="color:#d08770;">1</span><span>), </span><span style="color:#d08770;">1</span><span>)
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># remove student from their groups
+</span><span>  mutate[nbStudents * (group1-</span><span style="color:#d08770;">1</span><span>) + student1] = </span><span style="color:#d08770;">0
+</span><span>  mutate[nbStudents * (group2-</span><span style="color:#d08770;">1</span><span>) + student2] = </span><span style="color:#d08770;">0
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># add them into the other groups
+</span><span>  mutate[nbStudents * (group1-</span><span style="color:#d08770;">1</span><span>) + student2] = </span><span style="color:#d08770;">1
+</span><span>  mutate[nbStudents * (group2-</span><span style="color:#d08770;">1</span><span>) + student1] = </span><span style="color:#d08770;">1
+</span><span>  
+</span><span>  </span><span style="color:#b48ead;">return</span><span>(mutate)
+</span><span>}
+</span></code></pre>
+<p>Let’s test the genetic algorithm with this custom mutation function, in
+combination with our initialization and cross-over functions.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>GA=</span><span style="color:#bf616a;">ga</span><span>(
+</span><span>  </span><span style="color:#bf616a;">type</span><span>=&#39;</span><span style="color:#a3be8c;">binary</span><span>&#39;,
+</span><span>  </span><span style="color:#bf616a;">fitness</span><span>=fitness,
+</span><span>  </span><span style="color:#bf616a;">nBits</span><span>=nbStudents*nbGroupsMax,
+</span><span>  </span><span style="color:#bf616a;">population </span><span>= group_population,
+</span><span>  </span><span style="color:#bf616a;">crossover </span><span>= group_crossover,
+</span><span>  </span><span style="color:#bf616a;">mutation </span><span>= group_mutation,
+</span><span>  </span><span style="color:#bf616a;">maxiter</span><span>=</span><span style="color:#d08770;">300</span><span>,
+</span><span>  </span><span style="color:#bf616a;">popSize</span><span>=</span><span style="color:#d08770;">100</span><span>,
+</span><span>  </span><span style="color:#bf616a;">seed</span><span>=seed,
+</span><span>  </span><span style="color:#bf616a;">keepBest</span><span>=</span><span style="color:#d08770;">TRUE</span><span>,
+</span><span>  </span><span style="color:#bf616a;">monitor</span><span>=</span><span style="color:#d08770;">FALSE 
+</span><span>)
+</span><span>
+</span><span style="color:#96b5b4;">plot</span><span>(GA, </span><span style="color:#bf616a;">ylim</span><span>=</span><span style="color:#96b5b4;">c</span><span>(</span><span style="color:#d08770;">0</span><span>, </span><span style="color:#96b5b4;">mean</span><span>(students</span><span style="color:#b48ead;">$</span><span>rmet)))
+</span></code></pre>
+<p><img src="/img/test-mutateFunction-1.png" alt="" /><!-- --></p>
+<p>AAAND IT WORKS!</p>
+<p>Moreover, if we summarize the results of the genetic algorithm, several
+solutions have been found.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">summary</span><span>(GA)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>-- Genetic Algorithm -------------------
+</span><span>
+</span><span>GA settings:
+</span><span>Type = binary
+</span><span>Population size = 100
+</span><span>Number of generations = 300
+</span><span>Elitism = 5
+</span><span>Crossover probability = 0.8
+</span><span>Mutation probability = 0.1
+</span><span>
+</span><span>GA results:
+</span><span>Iterations = 300
+</span><span>Fitness function value = 26.49226
+</span><span>Solutions = x1 x2 x3 x4 x5 x6 x7 x8 x9 x10 ... x119 x120
+</span><span>[1,] 0 1 0 0 0 0 1 0 0 0 ... 0 0
+</span><span>[2,] 0 0 1 0 0 0 0 0 0 0 ... 0 0
+</span><span>[3,] 0 0 0 0 0 0 0 0 0 0 ... 0 0
+</span><span>[4,] 0 0 1 0 0 0 0 1 0 0 ... 0 0
+</span><span>[5,] 0 1 0 0 0 0 1 0 0 0 ... 0 0
+</span></code></pre>
+<p>However, sets of 0 and 1 are difficult to analyze.</p>
+<h2 id="visualizing-solutions">Visualizing solutions<a class="zola-anchor" href="#visualizing-solutions" aria-label="Anchor link for: visualizing-solutions">🔗</a></h2>
+<p>To better visualize the solutions, we can plot them as a graph/network
+of students. To do so, we’ll use the R package
+<a href="https://igraph.org/r/">igraph</a>.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">library</span><span>(igraph)
+</span></code></pre>
+<p>First, we need to represent the students with their RMET scores. Each
+student are represented as nodes/vertices of the graph, with their id
+and RMET score as labels.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>g &lt;- </span><span style="color:#bf616a;">make_empty_graph</span><span>(</span><span style="color:#bf616a;">directed </span><span>= </span><span style="color:#d08770;">FALSE</span><span>)
+</span><span>
+</span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">nrow</span><span>(students))
+</span><span>  g &lt;- </span><span style="color:#bf616a;">add_vertices</span><span>(g, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#bf616a;">label</span><span>=</span><span style="color:#96b5b4;">paste</span><span>(i, &quot;</span><span style="color:#a3be8c;"> (</span><span>&quot;, students[i,]</span><span style="color:#b48ead;">$</span><span>rmet, &quot;</span><span style="color:#a3be8c;">)</span><span>&quot;, </span><span style="color:#bf616a;">sep</span><span>=&quot;&quot;))
+</span><span>
+</span><span>
+</span><span style="color:#65737e;"># plot graph
+</span><span>co &lt;- </span><span style="color:#bf616a;">layout_nicely</span><span>(g)
+</span><span style="color:#96b5b4;">plot</span><span>(</span><span style="color:#d08770;">0</span><span>, 
+</span><span>     </span><span style="color:#bf616a;">type</span><span>=&quot;</span><span style="color:#a3be8c;">n</span><span>&quot;,
+</span><span>     </span><span style="color:#bf616a;">ann</span><span>=</span><span style="color:#d08770;">FALSE</span><span>, </span><span style="color:#bf616a;">axes</span><span>=</span><span style="color:#d08770;">FALSE</span><span>,
+</span><span>     </span><span style="color:#bf616a;">xlim</span><span>=</span><span style="color:#96b5b4;">extendrange</span><span>(co[,</span><span style="color:#d08770;">1</span><span>]), 
+</span><span>     </span><span style="color:#bf616a;">ylim</span><span>=</span><span style="color:#96b5b4;">extendrange</span><span>(co[,</span><span style="color:#d08770;">2</span><span>])
+</span><span>   )
+</span><span style="color:#96b5b4;">plot</span><span>(g, </span><span style="color:#bf616a;">layout</span><span>=co, </span><span style="color:#bf616a;">rescale</span><span>=</span><span style="color:#d08770;">FALSE</span><span>, </span><span style="color:#bf616a;">add</span><span>=</span><span style="color:#d08770;">TRUE</span><span>,
+</span><span>     </span><span style="color:#bf616a;">vertex.shape</span><span>=&quot;</span><span style="color:#a3be8c;">rectangle</span><span>&quot;,
+</span><span>     </span><span style="color:#bf616a;">vertex.size</span><span>=</span><span style="color:#96b5b4;">strwidth</span><span>(</span><span style="color:#bf616a;">V</span><span>(g)</span><span style="color:#b48ead;">$</span><span>label) * </span><span style="color:#d08770;">100</span><span>,
+</span><span>     </span><span style="color:#bf616a;">vertex.size2</span><span>=</span><span style="color:#96b5b4;">strheight</span><span>(</span><span style="color:#bf616a;">V</span><span>(g)</span><span style="color:#b48ead;">$</span><span>label) * </span><span style="color:#d08770;">100 </span><span>* </span><span style="color:#d08770;">1.5</span><span>,
+</span><span>     </span><span style="color:#bf616a;">edge.width</span><span>=</span><span style="color:#d08770;">5
+</span><span>     )
+</span></code></pre>
+<p><img src="/img/plot-students-1.png" alt="" /><!-- --></p>
+<p>Then, each edge of the graph will represent the fact that two students
+are in the same group.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>solution &lt;- GA</span><span style="color:#b48ead;">@</span><span>solution[</span><span style="color:#d08770;">1</span><span>,]
+</span><span>m &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(solution, </span><span style="color:#bf616a;">ncol </span><span>= nbStudents, </span><span style="color:#bf616a;">byrow </span><span>= </span><span style="color:#d08770;">TRUE</span><span>)
+</span><span>
+</span><span style="color:#65737e;"># for each group
+</span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbGroupsMax){
+</span><span>  </span><span style="color:#65737e;"># get the students in the group
+</span><span>  studentIds &lt;- </span><span style="color:#96b5b4;">which</span><span>(m[i, ] == </span><span style="color:#d08770;">1</span><span>)
+</span><span>  </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">length</span><span>(studentIds) &gt; </span><span style="color:#d08770;">0</span><span>){ </span><span style="color:#65737e;"># group not empty
+</span><span>    edges &lt;- </span><span style="color:#96b5b4;">c</span><span>()
+</span><span>    </span><span style="color:#65737e;"># for each student if the group
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(j in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">length</span><span>(studentIds)){
+</span><span>      edges[</span><span style="color:#96b5b4;">length</span><span>(edges)+</span><span style="color:#d08770;">1</span><span>] &lt;- studentIds[j]
+</span><span>      </span><span style="color:#b48ead;">if</span><span>(j &lt; </span><span style="color:#96b5b4;">length</span><span>(studentIds)) </span><span style="color:#65737e;"># if not last student
+</span><span>    </span><span style="color:#65737e;"># connect students j and j+#
+</span><span>        edges[</span><span style="color:#96b5b4;">length</span><span>(edges)+</span><span style="color:#d08770;">1</span><span>] &lt;- studentIds[j+</span><span style="color:#d08770;">1</span><span>]
+</span><span>      </span><span style="color:#b48ead;">else </span><span style="color:#65737e;"># if last student, connect it to the first
+</span><span>        edges[</span><span style="color:#96b5b4;">length</span><span>(edges)+</span><span style="color:#d08770;">1</span><span>] &lt;- studentIds[</span><span style="color:#d08770;">1</span><span>]
+</span><span>    }
+</span><span>    g &lt;- </span><span style="color:#bf616a;">add_edges</span><span>(g, edges)
+</span><span>  }
+</span><span>}
+</span><span>
+</span><span style="color:#65737e;"># plot graph
+</span><span>co &lt;- </span><span style="color:#bf616a;">layout_nicely</span><span>(g)
+</span><span style="color:#96b5b4;">plot</span><span>(</span><span style="color:#d08770;">0</span><span>, 
+</span><span>     </span><span style="color:#bf616a;">type</span><span>=&quot;</span><span style="color:#a3be8c;">n</span><span>&quot;,
+</span><span>     </span><span style="color:#bf616a;">ann</span><span>=</span><span style="color:#d08770;">FALSE</span><span>, </span><span style="color:#bf616a;">axes</span><span>=</span><span style="color:#d08770;">FALSE</span><span>,
+</span><span>     </span><span style="color:#bf616a;">xlim</span><span>=</span><span style="color:#96b5b4;">extendrange</span><span>(co[,</span><span style="color:#d08770;">1</span><span>]), 
+</span><span>     </span><span style="color:#bf616a;">ylim</span><span>=</span><span style="color:#96b5b4;">extendrange</span><span>(co[,</span><span style="color:#d08770;">2</span><span>])
+</span><span>   )
+</span><span style="color:#96b5b4;">plot</span><span>(g, </span><span style="color:#bf616a;">layout</span><span>=co, </span><span style="color:#bf616a;">rescale</span><span>=</span><span style="color:#d08770;">FALSE</span><span>, </span><span style="color:#bf616a;">add</span><span>=</span><span style="color:#d08770;">TRUE</span><span>,
+</span><span>     </span><span style="color:#bf616a;">vertex.shape</span><span>=&quot;</span><span style="color:#a3be8c;">rectangle</span><span>&quot;,
+</span><span>     </span><span style="color:#bf616a;">vertex.size</span><span>=</span><span style="color:#96b5b4;">strwidth</span><span>(</span><span style="color:#bf616a;">V</span><span>(g)</span><span style="color:#b48ead;">$</span><span>label) * </span><span style="color:#d08770;">100</span><span>,
+</span><span>     </span><span style="color:#bf616a;">vertex.size2</span><span>=</span><span style="color:#96b5b4;">strheight</span><span>(</span><span style="color:#bf616a;">V</span><span>(g)</span><span style="color:#b48ead;">$</span><span>label) * </span><span style="color:#d08770;">100 </span><span>* </span><span style="color:#d08770;">1.5</span><span>,
+</span><span>     </span><span style="color:#bf616a;">edge.width</span><span>=</span><span style="color:#d08770;">5
+</span><span>     )
+</span></code></pre>
+<p><img src="/img/plot-groups-1.png" alt="" /><!-- --></p>
+<p>Now, it could be interesting to plot the RMET mean score of each group.
+To do so, we compute the RMET mean and the center in the graph of each
+group.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>co &lt;- </span><span style="color:#bf616a;">layout_nicely</span><span>(g)
+</span><span style="color:#96b5b4;">plot</span><span>(</span><span style="color:#d08770;">0</span><span>, 
+</span><span>     </span><span style="color:#bf616a;">type</span><span>=&quot;</span><span style="color:#a3be8c;">n</span><span>&quot;,
+</span><span>     </span><span style="color:#bf616a;">ann</span><span>=</span><span style="color:#d08770;">FALSE</span><span>, </span><span style="color:#bf616a;">axes</span><span>=</span><span style="color:#d08770;">FALSE</span><span>,
+</span><span>     </span><span style="color:#bf616a;">xlim</span><span>=</span><span style="color:#96b5b4;">extendrange</span><span>(co[,</span><span style="color:#d08770;">1</span><span>]), 
+</span><span>     </span><span style="color:#bf616a;">ylim</span><span>=</span><span style="color:#96b5b4;">extendrange</span><span>(co[,</span><span style="color:#d08770;">2</span><span>])
+</span><span>   )
+</span><span style="color:#96b5b4;">plot</span><span>(g, </span><span style="color:#bf616a;">layout</span><span>=co, </span><span style="color:#bf616a;">rescale</span><span>=</span><span style="color:#d08770;">FALSE</span><span>, </span><span style="color:#bf616a;">add</span><span>=</span><span style="color:#d08770;">TRUE</span><span>,
+</span><span>     </span><span style="color:#bf616a;">vertex.shape</span><span>=&quot;</span><span style="color:#a3be8c;">rectangle</span><span>&quot;,
+</span><span>     </span><span style="color:#bf616a;">vertex.size</span><span>=</span><span style="color:#96b5b4;">strwidth</span><span>(</span><span style="color:#bf616a;">V</span><span>(g)</span><span style="color:#b48ead;">$</span><span>label) * </span><span style="color:#d08770;">100</span><span>,
+</span><span>     </span><span style="color:#bf616a;">vertex.size2</span><span>=</span><span style="color:#96b5b4;">strheight</span><span>(</span><span style="color:#bf616a;">V</span><span>(g)</span><span style="color:#b48ead;">$</span><span>label) * </span><span style="color:#d08770;">100 </span><span>* </span><span style="color:#d08770;">1.5</span><span>,
+</span><span>     </span><span style="color:#bf616a;">edge.width</span><span>=</span><span style="color:#d08770;">5
+</span><span>     )
+</span><span>
+</span><span>rmet_means &lt;- </span><span style="color:#96b5b4;">c</span><span>()
+</span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbGroupsMax){
+</span><span>  studentIds &lt;- </span><span style="color:#96b5b4;">which</span><span>(m[i, ] == </span><span style="color:#d08770;">1</span><span>)
+</span><span>  </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">length</span><span>(studentIds) &gt; </span><span style="color:#d08770;">0</span><span>){
+</span><span>    rmet_means[i] &lt;- </span><span style="color:#96b5b4;">mean</span><span>(students[m[i,]==</span><span style="color:#d08770;">1</span><span>,]</span><span style="color:#b48ead;">$</span><span>rmet)
+</span><span>    studentCoors &lt;- co[studentIds,]
+</span><span>    xcoor &lt;- </span><span style="color:#96b5b4;">sum</span><span>(studentCoors[,</span><span style="color:#d08770;">1</span><span>]) / </span><span style="color:#96b5b4;">nrow</span><span>(studentCoors)
+</span><span>    ycoor &lt;- </span><span style="color:#96b5b4;">sum</span><span>(studentCoors[,</span><span style="color:#d08770;">2</span><span>]) / </span><span style="color:#96b5b4;">nrow</span><span>(studentCoors)
+</span><span>    </span><span style="color:#96b5b4;">text</span><span>(xcoor, ycoor, </span><span style="color:#96b5b4;">round</span><span>(rmet_means[i], </span><span style="color:#d08770;">1</span><span>))
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p><img src="/img/plot-rmet-means-1.png" alt="" /><!-- --></p>
+<p>Finally, we can aggregate all these elements in a function to plot any
+solution.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#8fa1b3;">display_groupmaking </span><span>&lt;- </span><span style="color:#b48ead;">function</span><span>(</span><span style="color:#bf616a;">solution</span><span>){
+</span><span>  g &lt;- </span><span style="color:#bf616a;">make_empty_graph</span><span>(</span><span style="color:#bf616a;">directed </span><span>= </span><span style="color:#d08770;">FALSE</span><span>)
+</span><span>
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">nrow</span><span>(students))
+</span><span>    g &lt;- </span><span style="color:#bf616a;">add_vertices</span><span>(g, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#bf616a;">label</span><span>=</span><span style="color:#96b5b4;">paste</span><span>(i, &quot;</span><span style="color:#a3be8c;"> (</span><span>&quot;, students[i,]</span><span style="color:#b48ead;">$</span><span>rmet, &quot;</span><span style="color:#a3be8c;">)</span><span>&quot;, </span><span style="color:#bf616a;">sep</span><span>=&quot;&quot;), </span><span style="color:#bf616a;">vertex.size</span><span>=</span><span style="color:#d08770;">50</span><span>)
+</span><span>  
+</span><span>  m &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(solution, </span><span style="color:#bf616a;">ncol </span><span>= nbStudents, </span><span style="color:#bf616a;">byrow </span><span>= </span><span style="color:#d08770;">TRUE</span><span>)
+</span><span>  rmet_means &lt;- </span><span style="color:#96b5b4;">c</span><span>()
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbGroupsMax){
+</span><span>    studentIds &lt;- </span><span style="color:#96b5b4;">which</span><span>(m[i, ] == </span><span style="color:#d08770;">1</span><span>)
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">length</span><span>(studentIds) &gt; </span><span style="color:#d08770;">0</span><span>){
+</span><span>      rmet_means[i] &lt;- </span><span style="color:#96b5b4;">mean</span><span>(students[m[i,]==</span><span style="color:#d08770;">1</span><span>,]</span><span style="color:#b48ead;">$</span><span>rmet)
+</span><span>      edges &lt;- </span><span style="color:#96b5b4;">c</span><span>()
+</span><span>      </span><span style="color:#b48ead;">for</span><span>(j in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">length</span><span>(studentIds)){
+</span><span>        edges[</span><span style="color:#96b5b4;">length</span><span>(edges)+</span><span style="color:#d08770;">1</span><span>] &lt;- studentIds[j]
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(j &lt; </span><span style="color:#96b5b4;">length</span><span>(studentIds))
+</span><span>          edges[</span><span style="color:#96b5b4;">length</span><span>(edges)+</span><span style="color:#d08770;">1</span><span>] &lt;- studentIds[j+</span><span style="color:#d08770;">1</span><span>]
+</span><span>        </span><span style="color:#b48ead;">else
+</span><span>          edges[</span><span style="color:#96b5b4;">length</span><span>(edges)+</span><span style="color:#d08770;">1</span><span>] &lt;- studentIds[</span><span style="color:#d08770;">1</span><span>]
+</span><span>      }
+</span><span>      g &lt;- </span><span style="color:#bf616a;">add_edges</span><span>(g, edges)
+</span><span>    }
+</span><span>  }
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># compute macro mean and standard deviation
+</span><span>  macro_rmet_mean &lt;- </span><span style="color:#96b5b4;">mean</span><span>(rmet_means)
+</span><span>  macro_rmet_sd &lt;- </span><span style="color:#96b5b4;">sd</span><span>(rmet_means)
+</span><span>  
+</span><span>  co &lt;- </span><span style="color:#bf616a;">layout_nicely</span><span>(g)
+</span><span>  </span><span style="color:#96b5b4;">plot</span><span>(</span><span style="color:#d08770;">0</span><span>, 
+</span><span>       </span><span style="color:#bf616a;">type</span><span>=&quot;</span><span style="color:#a3be8c;">n</span><span>&quot;,
+</span><span>       </span><span style="color:#bf616a;">ann</span><span>=</span><span style="color:#d08770;">TRUE</span><span>, </span><span style="color:#bf616a;">axes</span><span>=</span><span style="color:#d08770;">FALSE</span><span>,
+</span><span>       </span><span style="color:#bf616a;">xlab</span><span>=&quot;&quot;,
+</span><span>       </span><span style="color:#bf616a;">ylab</span><span>=&quot;&quot;,
+</span><span>       </span><span style="color:#bf616a;">xlim</span><span>=</span><span style="color:#96b5b4;">extendrange</span><span>(co[,</span><span style="color:#d08770;">1</span><span>]), 
+</span><span>       </span><span style="color:#bf616a;">ylim</span><span>=</span><span style="color:#96b5b4;">extendrange</span><span>(co[,</span><span style="color:#d08770;">2</span><span>]),
+</span><span>       </span><span style="color:#bf616a;">main</span><span>=</span><span style="color:#96b5b4;">paste</span><span>(&quot;</span><span style="color:#a3be8c;">Score = </span><span>&quot;, macro_rmet_mean - macro_rmet_sd),
+</span><span>       </span><span style="color:#bf616a;">sub</span><span>=</span><span style="color:#96b5b4;">paste</span><span>(&quot;</span><span style="color:#a3be8c;">Macro mean =</span><span>&quot;, macro_rmet_mean, &quot;</span><span style="color:#a3be8c;">±</span><span>&quot;, macro_rmet_sd)
+</span><span>       )
+</span><span>  </span><span style="color:#96b5b4;">plot</span><span>(g, </span><span style="color:#bf616a;">layout</span><span>=co, </span><span style="color:#bf616a;">rescale</span><span>=</span><span style="color:#d08770;">FALSE</span><span>, </span><span style="color:#bf616a;">add</span><span>=</span><span style="color:#d08770;">TRUE</span><span>,
+</span><span>       </span><span style="color:#bf616a;">vertex.shape</span><span>=&quot;</span><span style="color:#a3be8c;">rectangle</span><span>&quot;,
+</span><span>       </span><span style="color:#bf616a;">vertex.size</span><span>=</span><span style="color:#96b5b4;">strwidth</span><span>(</span><span style="color:#bf616a;">V</span><span>(g)</span><span style="color:#b48ead;">$</span><span>label) * </span><span style="color:#d08770;">100</span><span>,
+</span><span>       </span><span style="color:#bf616a;">vertex.size2</span><span>=</span><span style="color:#96b5b4;">strheight</span><span>(</span><span style="color:#bf616a;">V</span><span>(g)</span><span style="color:#b48ead;">$</span><span>label) * </span><span style="color:#d08770;">100 </span><span>* </span><span style="color:#d08770;">1.5</span><span>,
+</span><span>       </span><span style="color:#bf616a;">edge.width</span><span>=</span><span style="color:#d08770;">5
+</span><span>       )
+</span><span>  
+</span><span>  
+</span><span>  </span><span style="color:#65737e;">## add rmet’s mean for each group
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbGroupsMax){
+</span><span>    studentIds &lt;- </span><span style="color:#96b5b4;">which</span><span>(m[i, ] == </span><span style="color:#d08770;">1</span><span>)
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">length</span><span>(studentIds) &gt; </span><span style="color:#d08770;">0</span><span>){
+</span><span>      studentCoors &lt;- co[studentIds,]
+</span><span>      xcoor &lt;- </span><span style="color:#96b5b4;">sum</span><span>(studentCoors[,</span><span style="color:#d08770;">1</span><span>]) / </span><span style="color:#96b5b4;">nrow</span><span>(studentCoors)
+</span><span>      ycoor &lt;- </span><span style="color:#96b5b4;">sum</span><span>(studentCoors[,</span><span style="color:#d08770;">2</span><span>]) / </span><span style="color:#96b5b4;">nrow</span><span>(studentCoors)
+</span><span>      </span><span style="color:#96b5b4;">text</span><span>(xcoor, ycoor, </span><span style="color:#96b5b4;">round</span><span>(rmet_means[i], </span><span style="color:#d08770;">1</span><span>))
+</span><span>    }
+</span><span>  }
+</span><span>}
+</span></code></pre>
+<p>Now, we can visualize the different solutions found by our custom
+genetic algorithm.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span style="color:#96b5b4;">nrow</span><span>(GA</span><span style="color:#b48ead;">@</span><span>solution)){
+</span><span>  </span><span style="color:#bf616a;">display_groupmaking</span><span>(GA</span><span style="color:#b48ead;">@</span><span>solution[i,])
+</span><span>}
+</span></code></pre>
+<p><img src="/img/displayBestSol-1.png" alt="" /><!-- --></p>
+<p><img src="/img/displayBestSol-2.png" alt="" /><!-- --></p>
+<p><img src="/img/displayBestSol-3.png" alt="" /><!-- --></p>
+<p><img src="/img/displayBestSol-4.png" alt="" /><!-- --></p>
+<p><img src="/img/displayBestSol-5.png" alt="" /><!-- --></p>
+<p>We can observe that not all solutions have been found by the genetic
+algorithm. Some students with the same RMET scores can be exchanged.
+But, it’s not a problem because it gives us a sample of good solutions
+to our problem. Moreover, we can exchange some students if necessary,
+without losing scores, to find a configuration that satisfies everyone.</p>
+<p>It could be interesting to use this visualization to observe the
+different generations of solutions generated by the genetic algorithm.
+For example, it’s possible to define, with the <em>GA</em> package, a “monitor”
+function. However, this blog post is already way too long, so maybe
+another time.</p>
+<h2 id="conclusion">Conclusion<a class="zola-anchor" href="#conclusion" aria-label="Anchor link for: conclusion">🔗</a></h2>
+<p>I had multiple objectives with this blog post. First, I wanted to
+practice genetic algorithms. It’s a type of algorithm I found very
+promising, especially <a href="https://en.wikipedia.org/wiki/Genetic_programming">genetic
+programming</a>. But,
+nowadays, I work almost entirely on machine learning and deep learning.</p>
+<p>Secondly, I wanted to find a way to create homogeneous student groups.
+As I say in the introduction, it’s a common problem for teachers. I have
+sometimes to deal with it, and its hard to find a solution that
+satistfies everyone. In addition, it was possible to apply a genetic
+algorithm to this problem, so it was the perfect occasion to test it.</p>
+<p>Thirdly, I wanted to popularise how a genetic algorithm works with a
+practical use case. To do so, I tried to narrate the different steps I
+went through. But, maybe, it would be more understandable with another
+use case.</p>
+<p>Besides, I had to make some choices that could be not optimal. For
+example, the choice of representing this problem as a binary problem (I
+talk about that in the next section). Also, for the cross-over step, I
+chose to keep the configuration of the parents’ group size. This is not
+a “bad” choice. It stays coherent with the idea to keep
+sub-characteristics of parents in children. But, it mechanically
+decreases the diversity of group sizes in solutions. Generation after
+generation, the genetic algorithm converges to a certain configuration
+of group sizes, without the possibility to explore other configurations
+of group sizes. It could be interesting to create mutation functions
+that could divide large groups or merge small groups, in addition to the
+mutation function which exchange two students.</p>
+<p>More generally, as I said in the introduction, genetic algorithms are
+quite interesting to find a set of parameters that optimize the result
+of a fitness function. For example, as proposed by Stanley and
+Miikkulainen (<a href="https://a-t-richard.github.io/blog/ga-group-making/#ref-stanley2002">2002</a>), genetic algorithms can be used
+in machine learning to find the best structures of neural networks (the
+number of neurons, the number of layers, etc. can be considered as
+parameters to optimize).</p>
+<p>Besides, genetic algorithms are also interesting to find solutions to
+multi-objectives problems. As I briefly said when I presented the
+customizable steps of genetic algorithms, it’s possible to have several
+fitness scores to evaluate a solution and look for Pareto optimal
+solutions at the selection phase. It’s more appropriate than trying to
+do some weighted average, which is generally the worst thing to do.
+Especially if the different objectives have nothing in common and cannot
+compensate for each other. Unfortunately, our use case didn’t need
+several objectives to be solved. So, I didn’t have the opportunity to
+try a multi-objectives genetic algorithm. Maybe another time.</p>
+<p>To conclude, I hope this blog post helped the few people who read it to
+better understand genetic algorithms and how to use/customize them.</p>
+<h3 id="bonus-another-way-to-solve-our-problem-with-the-genetic-algorithm">Bonus: another way to solve our problem with the Genetic Algorithm<a class="zola-anchor" href="#bonus-another-way-to-solve-our-problem-with-the-genetic-algorithm" aria-label="Anchor link for: bonus-another-way-to-solve-our-problem-with-the-genetic-algorithm">🔗</a></h3>
+<p>To be totally honest with you I had to show you another way, way more
+easier, to solve our problem. Maybe some of the readers already find it.
+It simply consist to represents the solutions to our problem as a list
+of size $nbStudents$ and to associating a number
+between 1 and $nbGroupsMax$ to each student.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span>variation_example &lt;- </span><span style="color:#96b5b4;">c</span><span>(</span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">2</span><span>,</span><span style="color:#d08770;">2</span><span>,</span><span style="color:#d08770;">2</span><span>,</span><span style="color:#d08770;">2</span><span>,</span><span style="color:#d08770;">3</span><span>,</span><span style="color:#d08770;">3</span><span>,</span><span style="color:#d08770;">3</span><span>,</span><span style="color:#d08770;">3</span><span>,</span><span style="color:#d08770;">4</span><span>,</span><span style="color:#d08770;">4</span><span>,</span><span style="color:#d08770;">4</span><span>,</span><span style="color:#d08770;">4</span><span>,</span><span style="color:#d08770;">5</span><span>,</span><span style="color:#d08770;">5</span><span>,</span><span style="color:#d08770;">5</span><span>,</span><span style="color:#d08770;">5</span><span>)
+</span></code></pre>
+<p>This way, the number of combinations tested by the genetic algorithm
+will be:</p>
+<p>$$
+nbGroupsMax^{nbStudents}
+$$</p>
+<p>With our use case, it gives us:</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">cat</span><span>(nbGroupsMax^nbStudents, &quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>3.656158e+15
+</span></code></pre>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">cat</span><span>(totNbCombinations / nbGroupsMax^nbStudents)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>0.001898546
+</span></code></pre>
+<p>The number of valid group combinations is still a fraction of all
+combinations tested by the genetic algorithm, but largely less than
+before.</p>
+<p>Now, we just have to rewrite our fitness function as follows:</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#8fa1b3;">variation_fitness </span><span>&lt;- </span><span style="color:#b48ead;">function</span><span>(</span><span style="color:#bf616a;">solution</span><span>){
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># compute info for each group
+</span><span>  counts &lt;- </span><span style="color:#96b5b4;">c</span><span>()
+</span><span>  means &lt;- </span><span style="color:#96b5b4;">c</span><span>()
+</span><span>  </span><span style="color:#b48ead;">for</span><span>(i in </span><span style="color:#d08770;">1</span><span style="color:#b48ead;">:</span><span>nbGroupsMax){
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">length</span><span>(solution[solution == i]) &gt; </span><span style="color:#d08770;">0</span><span>){
+</span><span>      counts[</span><span style="color:#96b5b4;">length</span><span>(counts) + </span><span style="color:#d08770;">1</span><span>] &lt;- </span><span style="color:#96b5b4;">length</span><span>(solution[solution == i])
+</span><span>      studentIds &lt;- </span><span style="color:#96b5b4;">which</span><span>(solution == i)
+</span><span>      means[</span><span style="color:#96b5b4;">length</span><span>(means) + </span><span style="color:#d08770;">1</span><span>] &lt;- </span><span style="color:#96b5b4;">mean</span><span>(students[studentIds,]</span><span style="color:#b48ead;">$</span><span>rmet)
+</span><span>    }
+</span><span>  }
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># check veto conditions
+</span><span>  </span><span style="color:#b48ead;">if</span><span>(</span><span style="color:#96b5b4;">any</span><span>(counts &lt; minStudentsByGroup) || </span><span style="color:#96b5b4;">any</span><span>(counts &gt; maxStudentsByGroup))
+</span><span>    </span><span style="color:#b48ead;">return</span><span>(</span><span style="color:#d08770;">0</span><span>)
+</span><span>  
+</span><span>  </span><span style="color:#65737e;"># return scores - penalty
+</span><span>  </span><span style="color:#b48ead;">return</span><span>(</span><span style="color:#96b5b4;">mean</span><span>(means) - </span><span style="color:#96b5b4;">sd</span><span>(means))
+</span><span>}
+</span><span>
+</span><span style="color:#96b5b4;">cat</span><span>(</span><span style="color:#bf616a;">variation_fitness</span><span>(variation_example))
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>23.67011
+</span></code></pre>
+<p>Then, we can apply the genetic algorithm to this representation of our
+problem. I didn’t find how to do this with the <em>GA</em> package. For this
+example, I’ll use the package
+<a href="https://cran.r-project.org/web/packages/rgenoud/index.html">rgenoud</a>,
+proposed by Mebane and Sekhon (<a href="https://a-t-richard.github.io/blog/ga-group-making/#ref-mebane2011">2011</a>), which allows
+parameters to be integers.</p>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">library</span><span>(&quot;</span><span style="color:#a3be8c;">rgenoud</span><span>&quot;)
+</span><span>
+</span><span style="color:#65737e;"># Define the domain of each parameter
+</span><span>mat &lt;- </span><span style="color:#96b5b4;">matrix</span><span>(
+</span><span>    </span><span style="color:#96b5b4;">rep</span><span>(</span><span style="color:#96b5b4;">c</span><span>(</span><span style="color:#d08770;">1</span><span>,nbGroupsMax),nbStudents),
+</span><span>    </span><span style="color:#bf616a;">nrow </span><span>= nbStudents, 
+</span><span>    </span><span style="color:#bf616a;">ncol </span><span>= </span><span style="color:#d08770;">2</span><span>,
+</span><span>    </span><span style="color:#bf616a;">byrow </span><span>= </span><span style="color:#d08770;">TRUE
+</span><span>  )
+</span><span>
+</span><span>variation_GA &lt;- </span><span style="color:#bf616a;">genoud</span><span>(
+</span><span>    variation_fitness,
+</span><span>    </span><span style="color:#bf616a;">nvars </span><span>= nbStudents,
+</span><span>    </span><span style="color:#bf616a;">max </span><span>= </span><span style="color:#d08770;">TRUE</span><span>,
+</span><span>    </span><span style="color:#bf616a;">pop.size </span><span>= </span><span style="color:#d08770;">100</span><span>,
+</span><span>    </span><span style="color:#bf616a;">max.generations </span><span>= </span><span style="color:#d08770;">400</span><span>,
+</span><span>    </span><span style="color:#bf616a;">hard.generation.limit </span><span>= </span><span style="color:#d08770;">FALSE</span><span>,
+</span><span>    </span><span style="color:#bf616a;">Domains </span><span>= mat,
+</span><span>    </span><span style="color:#bf616a;">boundary.enforcement </span><span>= </span><span style="color:#d08770;">2</span><span>,
+</span><span>    </span><span style="color:#bf616a;">data.type.int </span><span>= </span><span style="color:#d08770;">TRUE</span><span>,
+</span><span>    </span><span style="color:#bf616a;">print.level </span><span>= </span><span style="color:#d08770;">0
+</span><span>  )
+</span><span>
+</span><span style="color:#96b5b4;">cat</span><span>(variation_GA</span><span style="color:#b48ead;">$</span><span>value, &quot;</span><span style="color:#96b5b4;">\n</span><span>&quot;)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>26.18434
+</span></code></pre>
+<pre data-lang="r" style="background-color:#2b303b;color:#c0c5ce;" class="language-r "><code class="language-r" data-lang="r"><span style="color:#96b5b4;">cat</span><span>(variation_GA</span><span style="color:#b48ead;">$</span><span>par)
+</span></code></pre>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>3 5 1 6 6 6 6 3 1 2 1 2 2 5 6 5 3 6 1 5
+</span></code></pre>
+<p>We can see that, with this representation of our solutions, the genetic
+algorithm finds solutions without the need to be customized. However,
+it’s still more relevant to customize it, to stay only on valid
+solutions, and also because with more students it doesn’t work (I let
+you try it).</p>
+<p>The reason I didn’t use this representation in this blog was only that I
+found it more interesting, from an “educational” point of view, to start
+from something that doesn’t work at all. But, I also had to show that
+there is not only one way to find solutions to a problem.</p>
+<h1 id="references">References<a class="zola-anchor" href="#references" aria-label="Anchor link for: references">🔗</a></h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-abdelbasset2018" class="csl-entry">
+<p>Abdel-Basset, Mohamed, Laila Abdel-Fatah, and Arun Kumar Sangaiah. 2018.
+“Chapter 10 - Metaheuristic Algorithms: A Comprehensive Review.” In
+<em>Computational Intelligence for Multimedia Big Data on the Cloud with
+Engineering Applications</em>, edited by Arun Kumar Sangaiah, Michael Sheng,
+and Zhiyong Zhang, 185–231. Intelligent Data-Centric Systems. Academic
+Press.
+https://doi.org/<a href="https://doi.org/10.1016/B978-0-12-813314-9.00010-4">https://doi.org/10.1016/B978-0-12-813314-9.00010-4</a>.</p>
+</div>
+<div id="ref-alamri2020" class="csl-entry">
+<p>Alamri, Basem, and Yasser Alharbi. 2020. “A Framework for Optimum
+Determination of LCL-Filter Parameters for n-Level Voltage Source
+Inverters Using Heuristic Approach.” <em>IEEE Access</em> 8 (January):
+209212–23. <a href="https://doi.org/10.1109/ACCESS.2020.3038583">https://doi.org/10.1109/ACCESS.2020.3038583</a>.</p>
+</div>
+<div id="ref-fan2020" class="csl-entry">
+<p>Fan, Xumei, William Sayers, Shujun Zhang, Zhiwu Han, Luquan Ren, and
+Hassan Chizari. 2020. “Review and Classification of Bio-Inspired
+Algorithms and Their Applications.” <em>Journal of Bionic Engineering</em> 17
+(3): 611–31.
+https://doi.org/<a href="https://doi.org/10.1007/s42235-020-0049-9">https://doi.org/10.1007/s42235-020-0049-9</a>.</p>
+</div>
+<div id="ref-kynast2021" class="csl-entry">
+<p>Kynast, Jana, Maryna Polyakova, Eva Maria Quinque, Andreas Hinz, Arno
+Villringer, and Matthias L. Schroeter. 2021. “Age- and Sex-Specific
+Standard Scores for the Reading the Mind in the Eyes Test.” <em>Frontiers
+in Aging Neuroscience</em> 12. <a href="https://doi.org/10.3389/fnagi.2020.607107">https://doi.org/10.3389/fnagi.2020.607107</a>.</p>
+</div>
+<div id="ref-mebane2011" class="csl-entry">
+<p>Mebane, Walter, and Jasjeet Sekhon. 2011. “Genetic Optimization Using
+Derivatives: The Rgenoud Package for r.” <em>Journal Of Statistical
+Software</em> 42 (June). <a href="https://doi.org/10.18637/jss.v042.i11">https://doi.org/10.18637/jss.v042.i11</a>.</p>
+</div>
+<div id="ref-riedl2021" class="csl-entry">
+<p>Riedl, Christoph, Young Ji Kim, Pranav Gupta, Thomas W Malone, and Anita
+Williams Woolley. 2021. “Quantifying Collective Intelligence in Human
+Groups.” <em>Proceedings of the National Academy of Sciences</em> 118 (21):
+e2005737118. <a href="https://www.pnas.org/doi/full/10.1073/pnas.2005737118">https://www.pnas.org/doi/full/10.1073/pnas.2005737118</a>.</p>
+</div>
+<div id="ref-scrucca2013" class="csl-entry">
+<p>Scrucca, Luca. 2013. “GA: A Package for Genetic Algorithms in R.”
+<em>Journal of Statistical Software</em> 53 (4): 1–37.
+<a href="https://doi.org/10.18637/jss.v053.i04">https://doi.org/10.18637/jss.v053.i04</a>.</p>
+</div>
+<div id="ref-stanley2002" class="csl-entry">
+<p>Stanley, Kenneth O, and Risto Miikkulainen. 2002. “Evolving Neural
+Networks Through Augmenting Topologies.” <em>Evolutionary Computation</em> 10
+(2): 99–127. <a href="https://doi.org/10.1162/106365602320169811">https://doi.org/10.1162/106365602320169811</a>.</p>
+</div>
+<div id="ref-warrier2017" class="csl-entry">
+<p>Warrier, Varun, Richard AI Bethlehem, and Simon Baron-Cohen. 2017. “The
+‘Reading the Mind in the Eyes’ Test (RMET).” In <em>Encyclopedia of
+Personality and Individual Differences</em>, edited by Virgil Zeigler-Hill
+and Todd K. Shackelford, 1–5. Cham: Springer International Publishing.
+<a href="https://doi.org/10.1007/978-3-319-28099-8_549-1">https://doi.org/10.1007/978-3-319-28099-8_549-1</a>.</p>
+</div>
+</div>
+
+  </article>
+</div>
+<!-- <div class="sticky bottom-0 px-3">
+    <a href="#page-top">Back to top of page</a>
+  </div> -->
+  <footer class="bg-white">
+    <div class="bg-white text-gray-400 container max-w-4xl mx-auto my-8 px-4">
+    © Antoine Richard. Template <a class="underline" target="_blank" href="https://github.com/adfaure/kodama-theme">Kodama</a> made with <a class="underline" target="_blank" href="https://getzola.org">zola</a>, inspired by <a class="underline" target="_blank" href="https://wowchemy.com/"> wowchemy</a> academic theme.
+    </div>
+  </footer>
+  </body>
+
+</html>
