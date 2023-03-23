@@ -35,3 +35,14 @@ contact_in_index = true
 menu_items = [
   { path = "#contacts", name = "Contact" },
 ]
+
+[translations]
+Biography = "Biography"
+Interests = "Interests"
+Education = "Education"
+toc = "Table of Contents"
+Published = "Published"
+Abstract = "Abstract"
+volume = "volume"
+number = "number"
+pages = "pages"
