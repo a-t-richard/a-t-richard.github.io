@@ -1,0 +1,124 @@
+---
+# "THE BEER-WARE LICENSE" (Revision 42):
+# 
+# @a-t-richard wrote this file.
+# 
+# As long as you retain this notice you can do whatever you want with thi stuff.
+# If we meet some day, and you think this stuff is worth it, you can buy me a beer in return.
+# 
+# Antoine T. Richard
+
+title: "Naive Bayesian Wave Collapse Generation"
+author: Antoine T. Richard
+date: "`r Sys.Date()`"
+output:
+  md_document:
+    preserve_yaml: true
+    variant: gfm
+bibliography: references.bib
+link-citations: true
+---
+
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+set.seed(42)
+```
+
+```{r initialMap} 
+m <- c(0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0)
+```
+
+```{r countOcc}
+nbOccs <- list(0,0)
+nbCoOccsLeft <- list(list(0,0), list(0,0))
+nbCoOccsRight <- list(list(0,0), list(0,0))
+for(i in 1:length(m)){
+  value <- m[i]
+  idValue <- value+1
+  nbOccs[[idValue]] = nbOccs[[idValue]] + 1
+  
+  # left
+  j <- i-1
+  if(j == 0){j = length(m)}
+  valueLeft <- m[j]
+  idValueLeft <- valueLeft + 1
+  nbCoOccsLeft[[idValue]][[idValueLeft]] = nbCoOccsLeft[[idValue]][[idValueLeft]] + 1
+  
+  # right
+  j <- i+1
+  if(j == length(m) + 1){j = 1}
+  valueRight <- m[j]
+  idValueRight <- valueRight + 1
+  nbCoOccsRight[[idValue]][[idValueRight]] = nbCoOccsRight[[idValue]][[idValueRight]] + 1
+}
+
+print(nbOccs)
+print(nbCoOccsLeft)
+print(nbCoOccsRight)
+```
+
+```{r computeProba}
+probaValues <- list(
+  nbOccs[[1]] / length(m), # P(m_i = 0)
+  nbOccs[[1]] / length(m)  # P(m_i = 1)
+)
+
+print(probaValues)
+
+probaValuesKnowingLeft <- list(
+  list(
+  nbCoOccsLeft[[1]][[1]] / nbOccs[[1]], # P(m_i = 0 | m_{i-1} = 0)
+  nbCoOccsLeft[[1]][[2]] / nbOccs[[2]]  # P(m_i = 0 | m_{i-1} = 1)
+  ),
+  list(
+  nbCoOccsLeft[[2]][[1]] / nbOccs[[1]], # P(m_i = 1 | m_{i-1} = 0)
+  nbCoOccsLeft[[2]][[2]] / nbOccs[[2]]  # P(m_i = 1 | m_{i-1} = 1)
+  )
+)
+
+print(probaValuesKnowingLeft)
+
+probaValuesKnowingRight <- list(
+  list(
+  nbCoOccsRight[[1]][[1]] / nbOccs[[1]], # P(m_i = 0 | m_{i+1} = 0)
+  nbCoOccsRight[[1]][[2]] / nbOccs[[2]]  # P(m_i = 0 | m_{i+1} = 1)
+  ),
+  list(
+  nbCoOccsRight[[2]][[1]] / nbOccs[[1]], # P(m_i = 1 | m_{i+1} = 0)
+  nbCoOccsRight[[2]][[2]] / nbOccs[[2]]  # P(m_i = 1 | m_{i+1} = 1)
+  )
+)
+
+print(probaValuesKnowingRight)
+```
+
+## Map Generation
+
+### Initialization
+
+```{r initNewMap}
+newM <- rep(probaValues[[2]], 30)
+print(newM)
+```
+
+```{r initCell}
+i <- round(runif(n = 1, min=1, max = length(newM)))
+p <- runif(n=1, min=0, max=1)
+
+if(p >= newM[i]){
+  newM[i] = 1
+} else {
+  newM[i] = 0
+}
+
+print(newM)
+```
+
+### Update proba
+
+```{r step1}
+for (cell in newM) {
+}
+```
+
+
