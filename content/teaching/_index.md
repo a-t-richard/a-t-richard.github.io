@@ -9,7 +9,7 @@ extra.name = "Teaching"
 extra.index_show = false
 +++
 
-## Summer School : Algorithmis Responsibility
+## Summer School : Algorithmic Responsibility
 
 * 22/05/2023: Intervention on "AI Responsibility in Healthcare"
   * [Slides](/files/SummerSchool-AI-Responsibility.pdf) (english)
