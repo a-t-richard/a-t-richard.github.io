@@ -22,7 +22,7 @@ extra.publications_types = [
 My current research activities focus on Artificial Intelligence
 in Healhcare Context and on Ethics of Algorithms
 
-- Machine Learning
-- Health Information System
-- Responsible AI
-- Transparent Algorithms
+* Machine Learning
+* Health Information System
+* Responsible AI
+* Transparent Algorithms
