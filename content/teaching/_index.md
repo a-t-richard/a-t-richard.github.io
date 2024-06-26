@@ -28,7 +28,7 @@ extra.index_show = false
 
 ### IFCSTL
 
-* 27/06/2024: Intervention on "AI for Healthcare Management"
+* 27/06/2024: [Intervention on "AI for Healthcare Management"](/files/IFCS-IA-LLM-Management.pdf)
 
 ## 2023
 
