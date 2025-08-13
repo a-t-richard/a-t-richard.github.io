@@ -3,13 +3,18 @@ title = "Teaching"
 sort_by = "date"
 weight = 4
 template = "teaching.html"
+page_template = "blog-page.html"
 insert_anchor_links = "right"
 
 extra.name = "Teaching"
 extra.index_show = false
 +++
 
-## 2024
+## 2025 - 2026
+
+* M2 TIW & Bio-Info: [Data Analysis](/teaching/tiw-dad)
+
+## 2023 - 2024
 
 ### UCBL - DU IA & Santé
 
@@ -30,7 +35,7 @@ extra.index_show = false
 
 * 27/06/2024: [Intervention on "AI for Healthcare Management"](/files/IFCS-IA-LLM-Management.pdf)
 
-## 2023
+## 2022 - 2023
 
 ### Summer School : Algorithms Responsibility
 

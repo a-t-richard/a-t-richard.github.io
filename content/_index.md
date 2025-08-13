@@ -1,15 +1,16 @@
 +++
 title = "Home"
-date = 2022-07-09
 page_template="simple-page.html"
 
 [extra]
-title = "Project Manager at the HCL"
+title = "Research Engineer, CICLY (HCL - UCBL)"
 
 interests = [
-  "Artificial Intelligence",
-  "Ethics of the Algorithms",
-  "Health Information Systems"
+  "AI/ML for Healthcare (NLP, Computer Vision, etc.)",
+  "Patient Privacy",
+  "Ethics of Algorithms",
+  "eXplainable AI (XAI)",
+  "AI Environmental Sustainability"
 ]
 
 [[extra.education.courses]]
@@ -44,10 +45,13 @@ My PhD was made in collaboration with Hospitals of Lyon (HCL)
 on clinical decision support systems, their applications, impacts
 and limitations.
 
-Today, I am still working with the HCL as Project Manager, 
+Today, I am still working with the HCL as Research Engineer,
+at the _Centre pour l’Innovation en Cancérologie de Lyon (CICLY)_,
 on projects including Artificial Intelligence.
  
-I’m currently interested in Machine Learning in sensible contexts,
-such as the Healthcare context, and in Ethics of Algorithms 
-(even if Multi-agent systems keep a special place in my heart and
-if the Ant Colony Optimization algorithm stays my favorite algorithm).
+I’m currently interested in Artificial Intelligence development and application
+in Healthcare contexts, such as: Natural Language Processing of medical reports,
+Computer Vision on CT Scans, and analyses of clinical data in general.
+But I’m also interested in connected subjects such: as Patient Privacy in AI,
+Ethics of the Algorithms, eXplainable AI, and more recently AI Environmental
+Sustainability.
