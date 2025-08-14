@@ -52,6 +52,6 @@ on projects including Artificial Intelligence.
 I’m currently interested in Artificial Intelligence development and application
 in Healthcare contexts, such as: Natural Language Processing of medical reports,
 Computer Vision on CT Scans, and analyses of clinical data in general.
-But I’m also interested in connected subjects such: as Patient Privacy in AI,
+In addition, I’m also interested in connected subjects such: as Patient Privacy,
 Ethics of the Algorithms, eXplainable AI, and more recently AI Environmental
 Sustainability.

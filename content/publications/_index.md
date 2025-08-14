@@ -20,9 +20,15 @@ extra.publications_types = [
 ## Topic of interest
 
 My current research activities focus on Artificial Intelligence
-in Healhcare contexts
+in Healhcare context
 
-* Machine Learning
-* Natural Language Processing
-* Health Information Systems
+* Natural Language Processing on medical reports
+* Computer vision on CT Scans
+* Machine Learning / Data Analysis of medical data
+
+But I’m also interested on connected subjects, such as:
+
+* Patient Privacy
 * eXplainable AI
+* Ethics of Algorithms
+* and, more recently, AI Environmental Sustainability 
