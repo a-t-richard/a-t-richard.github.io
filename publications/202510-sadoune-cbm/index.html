@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <link rel="shortcut icon" href="https:&#x2F;&#x2F;a-t-richard.github.io&#x2F;processed_images&#x2F;a8cbdf2e7fa4c9a100.png" type="image/png">
+  <link rel="icon" href="https:&#x2F;&#x2F;a-t-richard.github.io&#x2F;processed_images&#x2F;a8cbdf2e7fa4c9a100.png" type="image/png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta charset="utf-8">
+
+  <!-- Custom header for users, includes custom css or js here -->
+  
+
+<title> Antoine Richard</title>
+
+  
+<!-- CSS -->
+<link rel="stylesheet" href="https://a-t-richard.github.io/styles/styles.css" />
+
+    <title>Publications |  Antoine Richard</title>
+</head>
+
+<body class="bg-white">
+  <!-- Top nav bar -->
+  
+<nav id="header" class="w-full z-10 top-0 shadow-md mx-0">
+  <div id="progress" class="top-0"></div>
+  <!-- <div class="w-full max-w-5xl mx-auto flex flex-wrap items-center justify-between mt-0 py-2  sm:bg-green-900 md:bg-red-900 lg:bg-blue-900 bg-yellow-900"> -->
+  <div class="w-full max-w-4xl mx-auto flex sm:flex-nowrap flex-wrap items-center justify-between mt-0 py-2">
+    <div class="pl-4">
+      <a class="text-gray-900 text-base no-underline hover:no-underline font-extrabold" href="https:&#x2F;&#x2F;a-t-richard.github.io/">
+        Antoine Richard
+      </a>
+    </div>
+
+    <div class="w-full flex-grow sm:flex sm:items-center flex-wrap sm:flex-nowrap sm:w-auto mt-2 sm:mt-0 bg-transparent z-20" id="nav-content">
+      <ul class="list-reset flex flex-wrap sm:justify-end flex-1 items-center">
+          <li class="mr-3 text-sm">
+              <a href="https://a-t-richard.github.io/blog" class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4">
+                Blog
+              </a>
+            </li>
+            <li class="mr-3 text-sm">
+              <a href="https://a-t-richard.github.io/publications" class="inline-block py-2 px-4 text-sky-600 font-bold no-underline">
+                Publications
+              </a>
+            </li>
+            <li class="mr-3 text-sm">
+              <a href="https://a-t-richard.github.io/teaching" class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4">
+                Teaching
+              </a>
+            </li>
+            <li class="mr-3 text-sm">
+            <a href=https://a-t-richard.github.io/#contacts class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:text-underline py-2 px-4">
+              Contact
+            </a>
+          </li>
+          </ul>
+    </div>
+  </div>
+</nav>
+
+  <!-- Container -->
+  
+
+
+  <div class="container max-w-3xl mx-auto px-4">
+  <div class="pt-8 flex-col mb-8">
+    <h1 class="grow font-bold font-sans break-normal text-gray-900 text-3xl">Automatic analysis of negation cues and scopes for medical texts in French using language models
+</h1>
+    <div class="grow">
+      <p class="text-sm text-slate-400">Salim Sadoune, Antoine Richard, François Talbot, Thomas Guyet, Loic Boussel, Hugues Berry
+  </p>
+    </div>
+    <div class="grow">
+      <p class="text-sm text-slate-400">
+  Computers in Biology and Medicine, volume 197, pages 110795, October 2025, <a href="https://doi.org/https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.compbiomed.2025.110795" target="_blank">doi: https:&#x2F;&#x2F;doi.org&#x2F;10.1016&#x2F;j.compbiomed.2025.110795</a></p>
+    </div>
+    <div class="grow pt-2"> 
+      
+
+
+      
+
+      
+      <a class="rounded-md border-solid border border-blue-600 inline-flex items-center text-blue-600 justify-center px-2 py-1 mr-2 text-xs font-bold" href="https:&#x2F;&#x2F;www.sciencedirect.com&#x2F;science&#x2F;article&#x2F;pii&#x2F;S0010482525011461"> url </a>
+      
+    </div>
+  </div>
+
+  <p class="font-bold">Abstract</p>
+  <article class="prose prose-indigo max-w-3xl pb-4">Objective:
+Correct automatic analysis of a medical report requires the identification of negations and their scopes. Since most of available training data comes from medical texts in English, it usually takes additional work to apply to non-English languages. Here, we introduce a supervised learning method for automatically identifying and determining the scopes and negation cues in French medical reports using language models based on BERT.
+Methods:
+Using a new private corpus of French-language chest CT scan reports with consistent annotation, we first fine-tuned five available transformer models on the negation cue and scope identification task. Subsequently, we extended the methodology by modifying the optimal model to encompass a wider range of clinical notes and reports (not limited to radiology reports) and more heterogeneous annotations. Lastly, we tested the generated model on its initial mask-filling task to ensure there is no catastrophic forgetting.
+Results:
+On a corpus of thoracic CT scan reports annotated by four annotators within our team, our method reaches a F1-score of 99.4% for cue detection and 94.5% for scope detection, thus equaling or improving state-of-the art performance. On more generic biomedical reports, annotated with more heterogeneous rules, the quality of the automatic analysis of course decreases, but our best-of-the class model still delivers very good performance, with F1-scores of 98.2% (cue detection), and 90.9% (scope detection). Moreover, we show that fine-tuning the original model for the negation identification task preserves or even improves its performance on its initial fill-mask task, depending on the lemmatization.
+Conclusion:
+Considering the performance of our fine-tuned model for the detection of negation cues and scopes in medical reports in French and its robustness with respect to the diversity of the annotation rules and the type of biomedical data, we conclude that it is suited for use in a real-life clinical context.
+  </article>
+  <div>
+    <p class="font-bold">Bibtex</p>
+    <div class="prose prose-indigo pb-4">
+      <pre ><code class="select-all">@article{sadoune2025,
+title = {Automatic analysis of negation cues and scopes for medical texts in French using language models},
+journal = {Computers in Biology and Medicine},
+volume = {197},
+pages = {110795},
+year = {2025},
+issn = {0010-4825},
+doi = {https://doi.org/10.1016/j.compbiomed.2025.110795},
+url = {https://www.sciencedirect.com/science/article/pii/S0010482525011461},
+author = {S. Sadoune and A. Richard and F. Talbot and T. Guyet and L. Boussel and H. Berry},
+keywords = {Negation analysis, Language models, Medical reports, Token classification task, Transformers},
+abstract = {Objective:
+Correct automatic analysis of a medical report requires the identification of negations and their scopes. Since most of available training data comes from medical texts in English, it usually takes additional work to apply to non-English languages. Here, we introduce a supervised learning method for automatically identifying and determining the scopes and negation cues in French medical reports using language models based on BERT.
+Methods:
+Using a new private corpus of French-language chest CT scan reports with consistent annotation, we first fine-tuned five available transformer models on the negation cue and scope identification task. Subsequently, we extended the methodology by modifying the optimal model to encompass a wider range of clinical notes and reports (not limited to radiology reports) and more heterogeneous annotations. Lastly, we tested the generated model on its initial mask-filling task to ensure there is no catastrophic forgetting.
+Results:
+On a corpus of thoracic CT scan reports annotated by four annotators within our team, our method reaches a F1-score of 99.4% for cue detection and 94.5% for scope detection, thus equaling or improving state-of-the art performance. On more generic biomedical reports, annotated with more heterogeneous rules, the quality of the automatic analysis of course decreases, but our best-of-the class model still delivers very good performance, with F1-scores of 98.2% (cue detection), and 90.9% (scope detection). Moreover, we show that fine-tuning the original model for the negation identification task preserves or even improves its performance on its initial fill-mask task, depending on the lemmatization.
+Conclusion:
+Considering the performance of our fine-tuned model for the detection of negation cues and scopes in medical reports in French and its robustness with respect to the diversity of the annotation rules and the type of biomedical data, we conclude that it is suited for use in a real-life clinical context.}
+}</code></pre>
+    </div>
+  </div>
+  </div>
+<!-- <div class="sticky bottom-0 px-3">
+    <a href="#page-top">Back to top of page</a>
+  </div> -->
+  <footer class="bg-white">
+    <div class="bg-white text-gray-400 container max-w-4xl mx-auto my-8 px-4">
+    © Antoine Richard. Template <a class="underline" target="_blank" href="https://github.com/adfaure/kodama-theme">Kodama</a> made with <a class="underline" target="_blank" href="https://getzola.org">zola</a>, inspired by <a class="underline" target="_blank" href="https://wowchemy.com/"> wowchemy</a> academic theme.
+    </div>
+  </footer>
+  </body>
+
+</html>

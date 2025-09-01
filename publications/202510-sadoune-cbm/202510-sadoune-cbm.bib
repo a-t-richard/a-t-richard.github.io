@@ -1,0 +1,20 @@
+@article{sadoune2025,
+title = {Automatic analysis of negation cues and scopes for medical texts in French using language models},
+journal = {Computers in Biology and Medicine},
+volume = {197},
+pages = {110795},
+year = {2025},
+issn = {0010-4825},
+doi = {https://doi.org/10.1016/j.compbiomed.2025.110795},
+url = {https://www.sciencedirect.com/science/article/pii/S0010482525011461},
+author = {S. Sadoune and A. Richard and F. Talbot and T. Guyet and L. Boussel and H. Berry},
+keywords = {Negation analysis, Language models, Medical reports, Token classification task, Transformers},
+abstract = {Objective:
+Correct automatic analysis of a medical report requires the identification of negations and their scopes. Since most of available training data comes from medical texts in English, it usually takes additional work to apply to non-English languages. Here, we introduce a supervised learning method for automatically identifying and determining the scopes and negation cues in French medical reports using language models based on BERT.
+Methods:
+Using a new private corpus of French-language chest CT scan reports with consistent annotation, we first fine-tuned five available transformer models on the negation cue and scope identification task. Subsequently, we extended the methodology by modifying the optimal model to encompass a wider range of clinical notes and reports (not limited to radiology reports) and more heterogeneous annotations. Lastly, we tested the generated model on its initial mask-filling task to ensure there is no catastrophic forgetting.
+Results:
+On a corpus of thoracic CT scan reports annotated by four annotators within our team, our method reaches a F1-score of 99.4% for cue detection and 94.5% for scope detection, thus equaling or improving state-of-the art performance. On more generic biomedical reports, annotated with more heterogeneous rules, the quality of the automatic analysis of course decreases, but our best-of-the class model still delivers very good performance, with F1-scores of 98.2% (cue detection), and 90.9% (scope detection). Moreover, we show that fine-tuning the original model for the negation identification task preserves or even improves its performance on its initial fill-mask task, depending on the lemmatization.
+Conclusion:
+Considering the performance of our fine-tuned model for the detection of negation cues and scopes in medical reports in French and its robustness with respect to the diversity of the annotation rules and the type of biomedical data, we conclude that it is suited for use in a real-life clinical context.}
+}
