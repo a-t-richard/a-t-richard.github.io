@@ -62,6 +62,9 @@ Ci-dessous les differents jeux de données utilisés dans les TPs.
 * [cars_synth_clean.csv](/files/TIW-DAD/datasets/cars_synth_clean.csv)
 * [wine-clustering.csv](/files/TIW-DAD/datasets/wine-clustering.csv) (Ce jeu de données provient de Kaggle, le dataset originel est disponible [ici](https://www.kaggle.com/datasets/harrywang/wine-dataset-for-clustering) )
 
+Pour mieux comprendre le fonctionnement des gaussiennes en 2D, voici un [notebook](/files/TIW-DAD/gaussians.ipynb)
+proposé par Louis Bagot (nécessite les package python *ipympl*, *ipywidgets*, *numpy* et *matplotlib*).
+
 ### Networks
 
 * [GOT.graphml](/files/TIW-DAD/datasets/GOT.graphml)
