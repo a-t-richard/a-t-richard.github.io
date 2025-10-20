@@ -44,7 +44,6 @@ Les contenus seront mis à jour au fur et à mesure.
 | (20/10) Other Data Types Transformations | [Slides](/files/TIW-DAD/Courses/TIW-DAD-Cours4-Data-Transfo.pdf) - [TP](/files/TIW-DAD/TPs/TIW-DAD-Data-transformation_TP.pdf)                                                                       |
 | (27/10) DASH - TP/Project                | [Tutoriel DASH](https://dash.plotly.com/tutorial) - [Exemples DASH](https://dash-example-index.herokuapp.com/) - [Fichiers exemples+slides](http://cazabetremy.fr/Teaching/TIW/Dash.zip)             |
 | (17/11) Project                          |                                                                                                                                                                                                      |
-|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 ## Jeux de données
 
