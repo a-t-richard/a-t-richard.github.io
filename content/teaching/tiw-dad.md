@@ -137,4 +137,15 @@ Si besoin, voici [quelques conseils pour trouver un dataset](https://cazabetremy
 (au moins la moitié des TPs) sur un jeu de données original et restituer sous
 forme de dashboard est suffisant, je ne demande pas d'aller plus loin dans l'analyse.
 
-Date de rendu du projet: à déterminer.
+Date maximale de rendu du projet: **Dimanche 23 Novembre à minuit**
+
+/!\ Chaque jour de retard entrainera des points en moins /!\
+
+Modalité de rendu:
+
+* Par mail à antoine.richard@chu-lyon.fr avec:
+  * En objet: le nom de l’UE et les noms/prénoms des membres de votre groupe
+  * Votre code source (archive zip ou lien github)
+  * Un rapport ou README.md détaillant votre méthodologie (il est aussi possible de faire une appli dash prenant la forme d’un rapport)
+
+/!\ Testez votre code avant, si je dois le bidouiller pour le faire tourner ça entrainera des points en moins /!\
