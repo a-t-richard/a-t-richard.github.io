@@ -46,7 +46,7 @@ on clinical decision support systems, their applications, impacts
 and limitations.
 
 Today, I am still working with the HCL as Research Engineer,
-at the _Centre pour l’Innovation en Cancérologie de Lyon (CICLY)_,
+at the _Centre pour l’Innovation en Chirurgie de la région Lyonnaise (CICLY)_,
 on projects including Artificial Intelligence.
  
 I’m currently interested in Artificial Intelligence development and application
