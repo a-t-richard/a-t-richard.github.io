@@ -29,13 +29,13 @@ interests = [
   year = 2014
 
 [[extra.avatar_icons]]
-  icon = "github"
+  icon = "github-solid"
   link = "https://github.com/a-t-richard"
 [[extra.avatar_icons]]
-  icon = "academic"
+  icon = "academic-solid"
   link = "https://orcid.org/0000-0001-8677-8910"
 [[extra.avatar_icons]]
-  icon = "mail"
+  icon = "mail-solid"
   link = "mailto:antoine.richard@chu-lyon.fr"
 +++
 
