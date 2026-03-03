@@ -68,15 +68,15 @@
 
   <div class="container max-w-3xl mx-auto px-4">
   <div class="pt-8 flex-col mb-8">
-    <h1 class="grow font-bold font-sans break-normal text-gray-900 text-3xl">Leveraging Latent Space and Radiomics for Multi-Label Classification of Chest CT Scans
+    <h1 class="grow font-bold font-sans break-normal text-gray-900 text-3xl">Aide à l&#x27;orientation diagnostique des maladies rares par l&#x27;analyse de descriptions cliniques
 </h1>
     <div class="grow">
-      <p class="text-sm text-slate-400">Axel Bessy, Thomas Barba, Alexandre Meyer, Hamid Ladjal, Antoine Richard, Mathieu Lefort, Simon Achard
+      <p class="text-sm text-slate-400">Antoine Richard, Aoitif Laarej, Thomas Guyet, Naoual Bakrin
   </p>
     </div>
     <div class="grow">
       <p class="text-sm text-slate-400">
-  PFIA 2025, June 2025</p>
+  EGC 2026, January 2026</p>
     </div>
     <div class="grow pt-2"> 
       
@@ -85,47 +85,30 @@
       
 
       
-      <a class="rounded-md border-solid border border-blue-600 inline-flex items-center text-blue-600 justify-center px-2 py-1 mr-2 text-xs font-bold" href="https:&#x2F;&#x2F;hal.science&#x2F;hal-05408360v1&#x2F;"> url </a>
+      <a class="rounded-md border-solid border border-blue-600 inline-flex items-center text-blue-600 justify-center px-2 py-1 mr-2 text-xs font-bold" href="https:&#x2F;&#x2F;inria.hal.science&#x2F;hal-05507923"> url </a>
       
     </div>
   </div>
 
   <p class="font-bold">Abstract</p>
-  <article class="prose prose-indigo max-w-3xl pb-4">In this article, we propose two approaches for multi-label
-diagnosis from chest CT images. The first, called Seg2Clf,
-leverages the latent space of the encoder from a pre-trained
-segmentation model to extract discriminative representations
-for classification. The second approach relies on the
-extraction and integration of clinical radiomic features, allowing
-prediction refinement using a k-NN classifier. These
-two complementary methods are part of a broader strategy
-aimed at developing automated systems capable of simultaneously
-identifying multiple thoracic pathologies with
-improved accuracy.
+  <article class="prose prose-indigo max-w-3xl pb-4">Bien que les maladies rares concernent plus de 3 millions de personnes en France, celles-ci restent méconnues et difficiles à repérer. Cela entraîne souvent une errance médicale pour les patients et des prises en charge sous-optimales. La détection préventive des maladies rares est donc un enjeu majeur. Dans ce papier, nous cherchons à évaluer la faisabilité d'exploiter les descriptions cliniques faites par des médecins généralistes pour prédire 1)~les centres de référence vers lesquels adresser les patients et 2)~les groupes de pathologies correspondant aux descriptions. Pour cela, nous avons constitué une base de données annotées à partir des documents de différents centres de référence, et exploré une approche de traitement automatique du langage basée sur des transformers. Deux modèles ont été évalués~: Longformer et DrLongformer. Nos résultats sont encourageants pour la classification vers des centres de références, avec des scores de précision et de rappel supérieurs à 0.7. Pour la classification vers des groupes de pathologies les résultats sont bien moindre, mais reste encourageants sur certaines classes, avec des F1-scores variant entre 0.5 et 0.7 pour la plupart d'entre elles.
   </article>
   <div>
     <p class="font-bold">Bibtex</p>
     <div class="prose prose-indigo pb-4">
-      <pre ><code class="select-all">@inproceedings{bessy2025,
-  TITLE = {{Leveraging Latent Space and Radiomics for Multi-Label Classification of Chest CT Scans}},
-  AUTHOR = {Bessy, Axel and Barba, Thomas and Meyer, Alexandre and Ladjal, Hamid and Richard, Antoine and Lefort, Mathieu and Achard, Simon},
-  BOOKTITLE = {PFIA 2025},
-  ADDRESS = {Dijon, France},
-  YEAR = {2025},
-  MONTH = {June},
-  KEYWORDS = {Multi-label classification ; Computed Tomography ; Transfer learning ; Radiomics ; Medical imaging},
-  abstract = {In this article, we propose two approaches for multi-label
-diagnosis from chest CT images. The first, called Seg2Clf,
-leverages the latent space of the encoder from a pre-trained
-segmentation model to extract discriminative representations
-for classification. The second approach relies on the
-extraction and integration of clinical radiomic features, allowing
-prediction refinement using a k-NN classifier. These
-two complementary methods are part of a broader strategy
-aimed at developing automated systems capable of simultaneously
-identifying multiple thoracic pathologies with
-improved accuracy.},
-  url = {https://hal.science/hal-05408360v1/}
+      <pre ><code class="select-all">@inproceedings{richard:hal-05507923,
+  TITLE = {{Aide {\`a} l'orientation diagnostique des maladies rares par l'analyse de descriptions cliniques}},
+  AUTHOR = {Richard, Antoine and Laarej, Aoitif and Guyet, Thomas and Bakrin, Naoual},
+  URL = {https://inria.hal.science/hal-05507923},
+  BOOKTITLE = {EGC 2026},
+  ADDRESS = {Anglet, France},
+  PUBLISHER = {{RNTI}},
+  YEAR = {2026},
+  MONTH = {January},
+  PDF = {https://inria.hal.science/hal-05507923v1/file/EGC26_Quickrare.pdf},
+  HAL_ID = {hal-05507923},
+  HAL_VERSION = {v1},
+  ABSTRACT = {Bien que les maladies rares concernent plus de 3 millions de personnes en France, celles-ci restent méconnues et difficiles à repérer. Cela entraîne souvent une errance médicale pour les patients et des prises en charge sous-optimales. La détection préventive des maladies rares est donc un enjeu majeur. Dans ce papier, nous cherchons à évaluer la faisabilité d'exploiter les descriptions cliniques faites par des médecins généralistes pour prédire 1)~les centres de référence vers lesquels adresser les patients et 2)~les groupes de pathologies correspondant aux descriptions. Pour cela, nous avons constitué une base de données annotées à partir des documents de différents centres de référence, et exploré une approche de traitement automatique du langage basée sur des transformers. Deux modèles ont été évalués~: Longformer et DrLongformer. Nos résultats sont encourageants pour la classification vers des centres de références, avec des scores de précision et de rappel supérieurs à 0.7. Pour la classification vers des groupes de pathologies les résultats sont bien moindre, mais reste encourageants sur certaines classes, avec des F1-scores variant entre 0.5 et 0.7 pour la plupart d'entre elles.}
 }
 </code></pre>
     </div>
