@@ -10,6 +10,11 @@ extra.name = "Teaching"
 extra.index_show = false
 +++
 
+## 2026 - 2027
+
+* M2 IA & DS : [Data Mining](/teaching/data-mining)
+* M2 TIW & DS: [Data Analysis](/teaching/tiw-dad)
+
 ## 2025 - 2026
 
 * M2 TIW & Bio-Info: [Data Analysis](/teaching/tiw-dad)
