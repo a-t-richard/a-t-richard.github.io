@@ -40,8 +40,8 @@ Il s'agit d'un programme provisoire qui sera amené à évoluer.
 Les contenus seront mis à jour au fur et à mesure de l’avancé dans le cours.
 
 | Date           | Topic                                    | Resources                                                                                                                                                                                            |
-|----------------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 07/09 9h45-13h | Introduction et présentation du cours                     |                                                                               |
+|----------------|------------------------------------------|-------------------------------------------------------------------------------------|
+| 07/09 9h45-13h | Introduction et présentation du cours    | [Slides](/files/DataMining/2026_DataMining_Cours0-Introduction-and-Definitions.pdf) |
 | 14/09 8h-13h   | Les bases de la fouilles de données        |                                                                                   |
 | 15/09 14h-19h  | Ordonner et regrouper des données |  |
 | 05/10 8h-13h   | Identifier des patterns et détecter des anomalies |                                                                        |
