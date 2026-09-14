@@ -119,7 +119,7 @@ en exploitant les notions et méthodes vues en cours.
 * Vous serez avant tout évalué sur la manière dont vous utilisez les notions et méthodes vues en cours
 * La note de projet sera égale pour toustes les membres d’un même groupe
 
-Les données pour le projet sont disponible ici: https://github.com/a-t-richard/20262027-UE-DataMining-Project
+Le repo github avec les données pour le projet est disponible ici: [20262027-UE-DataMining-Project](https://github.com/a-t-richard/20262027-UE-DataMining-Project)
 
 Date maximale de rendu du projet: *À définir*
 
