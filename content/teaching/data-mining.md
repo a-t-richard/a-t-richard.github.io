@@ -43,7 +43,7 @@ Les contenus seront mis à jour au fur et à mesure de l’avancé dans le cours
 |----------------|------------------------------------------|--------------------------------------------------------------------------------------|
 | 07/09 9h45-13h | Introduction et présentation du cours    | [Slides](/files/DataMining/2026_DataMining_Cours0-Introduction-and-Definitions.pdf)  |
 | 14/09 8h-13h   | Les bases de la fouilles de données      | [Slides](/files/DataMining/2026_DataMining_Cours1-Cleaning-and-Basic-statistics.pdf) |
-| 15/09 14h-19h  | Ordonner et regrouper des données |  |
+| 15/09 14h-19h  | Ordonner et regrouper des données        | [Slides](/files/DataMining/2026_DataMining_Cours2-Ordering-and-Clustering.pdf) |
 | 05/10 8h-13h   | Identifier des patterns et détecter des anomalies |                                                                        |
 | 06/10 14h-19h  | Miner des graphes et des processus |              |
 | 12/10 8h-13h   | Miner des données spatiales et temporelles |                                                                                                                                                                                                      |
