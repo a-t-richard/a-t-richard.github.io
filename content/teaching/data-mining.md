@@ -54,7 +54,25 @@ Les contenus seront mis à jour au fur et à mesure de l’avancé dans le cours
 
 Ci-dessous les differents jeux de données utilisés dans les TPs.
 
-(Section mise à jour au fur et à mesure de l’avancé dans le cours).
+### Cours 1 - Bases du data mining
+
+1. [FIFA 21 Messy](https://www.kaggle.com/datasets/yagunnersya/fifa-21-messy-raw-dataset-for-cleaning-exploring)
+2. [Multi-Hospital Lab Results](https://www.kaggle.com/datasets/nudratabbas/multi-hospital-lab-results-messy-data)
+3. [Real Estate Raw Dataset](https://www.kaggle.com/datasets/rumanaamin/real-estate-raw-dataset-for-cleaningexploring)
+4. [Messy e-Commerce Sales](https://www.kaggle.com/datasets/kandeeldev/messy-e-commerce-sales-data)
+5. [Messy Employee Dataset](https://www.kaggle.com/datasets/desolution01/messy-employee-dataset)
+6. [Amazon Laptop Messy Dataset](https://www.kaggle.com/datasets/rudraprasadbhuyan/amazon-laptop-messy-dataset)
+7. [Customer Messy Data](https://www.kaggle.com/datasets/ruchikakumbhar1806/customer-messy-data)
+
+### Cours 2 - Ordonner et regrouper des données
+
+1. [The complete pokemon dataset](https://www.kaggle.com/datasets/rounakbanik/pokemon)
+2. [Used cars dataset](https://www.kaggle.com/datasets/austinreese/craigslist-carstrucks-data)
+3. [League of Legends Champions](https://www.kaggle.com/datasets/cutedango/league-of-legends-champions)
+4. [NBA players statistics](https://www.kaggle.com/datasets/joebeachcapital/nba-player-statistics)
+5. [MTG Card ratings](https://www.kaggle.com/datasets/darrylljk/magic-the-gathering-card-ratings-otj)
+6. [Countries of the world](https://www.kaggle.com/datasets/fernandol/countries-of-the-world)
+7. [Digimon Database](https://www.kaggle.com/datasets/rtatman/digidb)
 
 ## Outils
 
