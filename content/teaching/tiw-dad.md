@@ -14,9 +14,11 @@ featured = false
 ## Introduction
 
 Ceci est la page du cours d'analyse de données (DAD), commun aux M2 TIW et
-Bio-Informatique, université Lyon 1.
+Data Science, université Lyon 1.
+
 Le cours comprend 2 parties organisées séparément, l'une enseignée par
 Fabien De Marchi, et l'autre organisée par moi-même.
+
 Cette page regroupe les informations sur ma partie du cours, qui a lieu le
 Lundi Après-Midi.
 
@@ -25,7 +27,9 @@ Lundi Après-Midi.
 Vous pouvez retrouver le détail des horaires et des salles ici : [adelb.univ-lyon1.fr](https://adelb.univ-lyon1.fr/)
 
 Les cours avec moi ont lieu le Lundi après-midi.
+
 Les cours avec Fabien De Marchi ont lieu le Mercredi après-midi.
+
 Les deux parties sont gérées indépendemment.
 
 ## Programmes et contenus
@@ -38,12 +42,13 @@ Les contenus seront mis à jour au fur et à mesure.
 
 | Topic                                    | Resources                                                                                                                                                                                            |
 |------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| (01/09) Introduction                     | [Slides](/files/TIW-DAD/Courses/TIW-DAD-Cours1-Introduction.pdf) - [TP](/files/TIW-DAD/TPs/TIW-DAD-Introduction_TP.pdf)                                                                              |
-| (22/09) Clustering Beyond K-Means        | [Slides](/files/TIW-DAD/Courses/TIW-DAD-Cours2-Clustering.pdf) - [TP](/files/TIW-DAD/TPs/TIW-DAD-Clustering_TP.pdf)                                                                                  |
-| (29/09) Network Data Mining              | [Slides](/files/TIW-DAD/Courses/TIW-DAD-Cours3-Networks.pdf) - [TP1 Gephi](/files/TIW-DAD/TPs/TIW-DAD-Networks_TP1_Gephi.pdf) - [TP2 Networkx](/files/TIW-DAD/TPs/TIW-DAD-Networks_TP2_Networkx.pdf) |
-| (20/10) Other Data Types Transformations | [Slides](/files/TIW-DAD/Courses/TIW-DAD-Cours4-Data-Transfo.pdf) - [TP](/files/TIW-DAD/TPs/TIW-DAD-Data-transformation_TP.pdf)                                                                       |
-| (27/10) DASH - TP/Project                | [Tutoriel DASH](https://dash.plotly.com/tutorial) - [Exemples DASH](https://dash-example-index.herokuapp.com/) - [Fichiers exemples+slides](http://cazabetremy.fr/Teaching/TIW/Dash.zip)             |
-| (17/11) Project                          |                                                                                                                                                                                                      |
+| (21/09 14h-17h15) Introduction                     | [Slides](/files/TIW-DAD/Courses/TIW-DAD-Cours1-Introduction.pdf) - [TP](/files/TIW-DAD/TPs/TIW-DAD-Introduction_TP.pdf)                                                                              |
+| (30/09 14h-17h15) Clustering Beyond K-Means        | [Slides](/files/TIW-DAD/Courses/TIW-DAD-Cours2-Clustering.pdf) - [TP](/files/TIW-DAD/TPs/TIW-DAD-Clustering_TP.pdf)                                                                                  |
+| (19/10 14h-17h15) Network Data Analysis              | [Slides](/files/TIW-DAD/Courses/TIW-DAD-Cours3-Networks.pdf) - [TP1 Gephi](/files/TIW-DAD/TPs/TIW-DAD-Networks_TP1_Gephi.pdf) - [TP2 Networkx](/files/TIW-DAD/TPs/TIW-DAD-Networks_TP2_Networkx.pdf) |
+| (20/10 14h-17h15) Other Data Types Transformations | [Slides](/files/TIW-DAD/Courses/TIW-DAD-Cours4-Data-Transfo.pdf) - [TP](/files/TIW-DAD/TPs/TIW-DAD-Data-transformation_TP.pdf)                                                                       |
+| (26/10 14h-17h15) DASH - TP/Project                | [Tutoriel DASH](https://dash.plotly.com/tutorial) - [Exemples DASH](https://dash-example-index.herokuapp.com/) - [Fichiers exemples+slides](http://cazabetremy.fr/Teaching/TIW/Dash.zip)             |
+| (16/11 14h-17h15) Project                          |                                                                                                                                                                                                      |
+| (23/11 14h-17h15) Project                          |                                                                                                                                                                                                      |
 
 ## Jeux de données
 
@@ -121,7 +126,7 @@ L'examen final comptera 50% des points sur ma partie (cours du Lundi).
 
 ### Examen Final
 
-Vous pouvez consulter les sujets des précédents examens (pour ma partie): [2022](https://cazabetremy.fr/Teaching/TIW/2022/Exams_2022.pdf) et [2023](https://cazabetremy.fr/Teaching/TIW/old%20subjects/Exam2023.pdf).
+Vous pouvez consulter les sujets de précédents examens (pour ma partie): [2022](https://cazabetremy.fr/Teaching/TIW/2022/Exams_2022.pdf) et [2023](https://cazabetremy.fr/Teaching/TIW/old%20subjects/Exam2023.pdf).
 Le contenu était légèrement différent et l'examen pourra être différent également.
 
 ### Projet
@@ -137,7 +142,7 @@ Si besoin, voici [quelques conseils pour trouver un dataset](https://cazabetremy
 (au moins la moitié des TPs) sur un jeu de données original et restituer sous
 forme de dashboard est suffisant, je ne demande pas d'aller plus loin dans l'analyse.
 
-Date maximale de rendu du projet: **Dimanche 23 Novembre à minuit**
+Date maximale de rendu du projet: **Dimanche 29 Novembre à minuit**
 
 /!\ Chaque jour de retard entrainera des points en moins /!\
 
