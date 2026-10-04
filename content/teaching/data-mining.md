@@ -44,7 +44,7 @@ Les contenus seront mis à jour au fur et à mesure de l’avancé dans le cours
 | 07/09 9h45-13h | Introduction et présentation du cours    | [Slides](/files/DataMining/2026_DataMining_Cours0-Introduction-and-Definitions.pdf)  |
 | 14/09 8h-13h   | Les bases de la fouilles de données      | [Slides](/files/DataMining/2026_DataMining_Cours1-Cleaning-and-Basic-statistics.pdf) |
 | 15/09 14h-19h  | Ordonner et regrouper des données        | [Slides](/files/DataMining/2026_DataMining_Cours2-Ordering-and-Clustering.pdf) |
-| 05/10 8h-13h   | Identifier des patterns et détecter des anomalies |                                                                        |
+| 05/10 8h-13h   | Identifier des patterns et détecter des anomalies | [Slides](/files/DataMining/2026_DataMining_Cours3-Patterns-and-Anomalies.pdf) |
 | 06/10 14h-19h  | Miner des graphes et des processus |              |
 | 12/10 8h-13h   | Miner des données spatiales et temporelles |                                                                                                                                                                                                      |
 | 13/10 14h-19h  | Miner des données textuelles |                                                                                                                                                                                                      |
@@ -73,6 +73,16 @@ Ci-dessous les differents jeux de données utilisés dans les TPs.
 5. [MTG Card ratings](https://www.kaggle.com/datasets/darrylljk/magic-the-gathering-card-ratings-otj)
 6. [Countries of the world](https://www.kaggle.com/datasets/fernandol/countries-of-the-world)
 7. [Digimon Database](https://www.kaggle.com/datasets/rtatman/digidb)
+
+### Cours 3 - Identifier des patterns et détecter des anomalies
+
+1. [Magic: The Gathering - Winning Pioneer Decks](https://www.kaggle.com/datasets/scarfsman/magic-the-gathering-winning-pioneer-decks)
+2. [Market Basket Analysis](https://www.kaggle.com/datasets/aslanahmedov/market-basket-analysis)
+3. [League of Legends Ranked Matches](https://www.kaggle.com/datasets/paololol/league-of-legends-ranked-matches/)
+4. [European Soccer Database](https://www.kaggle.com/datasets/hugomathien/soccer)
+5. [Pokemon TCG - All Tournaments Decks](https://www.kaggle.com/datasets/enriccogemha/pokemon-tcg-all-tournaments-decks-2011-2023)
+6. [Chess Games](https://www.kaggle.com/datasets/arevel/chess-games)
+7. [Brewer's Friend Beer Recipes](https://www.kaggle.com/datasets/jtrofe/beer-recipes)
 
 ## Outils
 
