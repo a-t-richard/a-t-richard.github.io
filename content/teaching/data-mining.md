@@ -40,15 +40,15 @@ Il s'agit d'un programme provisoire qui sera amené à évoluer.
 Les contenus seront mis à jour au fur et à mesure de l’avancé dans le cours.
 
 | Date           | Topic                                    | Resources                                                                                                                                                                                            |
-|----------------|------------------------------------------|--------------------------------------------------------------------------------------|
-| 07/09 9h45-13h | Introduction et présentation du cours    | [Slides](/files/DataMining/2026_DataMining_Cours0-Introduction-and-Definitions.pdf)  |
-| 14/09 8h-13h   | Les bases de la fouilles de données      | [Slides](/files/DataMining/2026_DataMining_Cours1-Cleaning-and-Basic-statistics.pdf) |
-| 15/09 14h-19h  | Ordonner et regrouper des données        | [Slides](/files/DataMining/2026_DataMining_Cours2-Ordering-and-Clustering.pdf) |
-| 05/10 8h-13h   | Identifier des patterns et détecter des anomalies | [Slides](/files/DataMining/2026_DataMining_Cours3-Patterns-and-Anomalies.pdf) |
-| 06/10 14h-19h  | Miner des graphes et des processus |              |
-| 12/10 8h-13h   | Miner des données spatiales et temporelles |                                                                                                                                                                                                      |
-| 13/10 14h-19h  | Miner des données textuelles |                                                                                                                                                                                                      |
-| 03/11 14h-19h  | EXAMEN (horaires à confirmer) | |
+|----------------|---------------------------------------------------|------------------------------------------------------------------------------------------------|
+| 07/09 9h45-13h | Introduction et présentation du cours             | [Slides](/files/DataMining/2026_DataMining_Cours0-Introduction-and-Definitions.pdf)            |
+| 14/09 8h-13h   | Les bases de la fouilles de données               | [Slides](/files/DataMining/2026_DataMining_Cours1-Cleaning-and-Basic-statistics.pdf)           |
+| 15/09 14h-19h  | Ordonner et regrouper des données                 | [Slides](/files/DataMining/2026_DataMining_Cours2-Ordering-and-Clustering.pdf)                 |
+| 05/10 8h-13h   | Identifier des patterns et détecter des anomalies | [Slides](/files/DataMining/2026_DataMining_Cours3-Patterns-and-Anomalies.pdf)                  |
+| 06/10 14h-19h  | Miner des graphes et des processus                | [Slides](/files/DataMining/2026_DataMining_Cours4-Mining-Graphs-and-Processes.pdf)             |
+| 12/10 8h-13h   | Miner des données spatiales et temporelles        | [Slides](/files/DataMining/2026_DataMining_Cours5-Mining-Spatial-and-Temporal-data.pdf)        |
+| 13/10 14h-19h  | Miner des données textuelles                      | [Slides](/files/DataMining/2026_DataMining_Cours6-Mining-Text-and-Other-Unstructured-Data.pdf) |
+| 03/11 14h-16h  | EXAMEN (1h30 + tiers temps)                       |                                                                                                |
 
 ## Jeux de données
 
@@ -83,6 +83,54 @@ Ci-dessous les differents jeux de données utilisés dans les TPs.
 5. [Pokemon TCG - All Tournaments Decks](https://www.kaggle.com/datasets/enriccogemha/pokemon-tcg-all-tournaments-decks-2011-2023)
 6. [Chess Games](https://www.kaggle.com/datasets/arevel/chess-games)
 7. [Brewer's Friend Beer Recipes](https://www.kaggle.com/datasets/jtrofe/beer-recipes)
+
+### Cours 4 - Miner des graphes et des processus
+
+#### Graph Mining
+
+1. [Airports, Airlines, Planes & Routes](https://www.kaggle.com/datasets/ahmadrafiee/airports-airlines-planes-and-routes-update-2024?select=routes.csv)
+2. [Superstore Sales Data](https://www.kaggle.com/datasets/divaadelia/superstore-sales-data)
+3. [League of Legends Ranked Matches](https://www.kaggle.com/datasets/paololol/league-of-legends-ranked-matches/)
+4. [Korean Drama from 2015-2023](https://www.kaggle.com/datasets/chanoncharuchinda/korean-drama-2015-23-actor-and-reviewmydramalist)
+5. [NBA games data](https://www.kaggle.com/datasets/nathanlauga/nba-games)
+6. [Diseases and their Symptoms](https://www.kaggle.com/datasets/shobhit043/diseases-and-their-symptoms)
+7. [Banking Transactions Dataset](https://www.kaggle.com/datasets/vivekmali1436/banking-transactions-dataset)
+
+#### Process Mining
+
+[Event logs for process mining](https://www.kaggle.com/datasets/carlosalvite/car-insurance-claims-event-log-for-process-mining)
+
+### Cours 5 - Miner des données spatiales et temporelles
+
+#### Jeux de données spatiales
+
+1. [GeoPlant: Spatial Plant Species Prediction Dataset](https://www.kaggle.com/datasets/picekl/geoplant)
+2. [US Wildfire Dataset](https://www.kaggle.com/datasets/firecastrl/us-wildfire-dataset)
+3. [World Air Quality Index by City and Coordinates](https://www.kaggle.com/datasets/adityaramachandran27/world-air-quality-index-by-city-and-coordinates)
+4. [Biodiversity in National Parks](https://www.kaggle.com/datasets/nationalparkservice/park-biodiversity)
+5. [Toronto Apartment Rental Price](https://www.kaggle.com/datasets/rajacsp/toronto-apartment-price)
+6. [The Chernobyl Disaster Air Concentration](https://www.kaggle.com/datasets/debjeetdas/air-concentration-for-the-chernobyl-disaster)
+7. [Air quality Frankfurt Dataset](https://www.kaggle.com/datasets/patwelch/air-quality-frankfurt-dataset)
+
+#### Jeux de données temporelles
+
+1. [ECG dataset](https://www.kaggle.com/datasets/devavratatripathy/ecg-dataset)
+2. [Wind & Solar Energy Production Dataset](https://www.kaggle.com/datasets/ahmeduzaki/wind-and-solar-energy-production-dataset)
+3. [House Hold Energy Data](https://www.kaggle.com/datasets/jaganadhg/house-hold-energy-data)
+4. [Daily Climate time series data](https://www.kaggle.com/datasets/sumanthvrao/daily-climate-time-series-data)
+5. [StackOverflow Questions Count Time Series](https://www.kaggle.com/datasets/aishu200023/stackindex)
+6. [Temperature Time-Series for some Brazilian cities](https://www.kaggle.com/datasets/volpatto/temperature-timeseries-for-some-brazilian-cities)
+7. [Walmart Sales Dataset](https://www.kaggle.com/datasets/varsharam/walmart-sales-dataset-of-45stores)
+
+### Cours 6 - Miner des données textuelles
+
+1. [Bitcoin Tweets](https://www.kaggle.com/datasets/kaushiksuresh147/bitcoin-tweets)
+2. [Rick&Morty Scripts](https://www.kaggle.com/datasets/andradaolteanu/rickmorty-scripts)
+3. [Social Media Influence](https://www.kaggle.com/datasets/cemrenurgenc/infant-feeding?select=FormulaMilk_3months_.csv)
+4. [Superheroes NLP Dataset](https://www.kaggle.com/datasets/jonathanbesomi/superheroes-nlp-dataset)
+5. [Emotions](https://www.kaggle.com/datasets/nelgiriyewithana/emotions)
+6. [Taylor Swift Song Lyrics](https://www.kaggle.com/datasets/PromptCloudHQ/taylor-swift-song-lyrics-from-all-the-albums)
+7. [Google Play Store Reviews](https://www.kaggle.com/datasets/prakharrathi25/google-play-store-reviews)
 
 ## Outils
 
