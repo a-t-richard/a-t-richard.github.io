@@ -197,16 +197,16 @@ en exploitant les notions et méthodes vues en cours.
 
 Le repo github avec les données pour le projet est disponible ici: [20262027-UE-DataMining-Project](https://github.com/a-t-richard/20262027-UE-DataMining-Project)
 
-Date maximale de rendu du projet: *À définir*
+Date maximale de rendu du projet: **Dimanche 08/11/2026 23:59**
 
-/!\ Chaque jour de retard entrainera des points en moins /!\
+/!\ Chaque jour de retard entrainera des points en moins /!\\
 
 **Modalité de rendu:**
 
-* Votre Notebook Jupyter décrivant ce que vous avez fait
+* Un ou plusieurs Notebook Jupyter décrivant ce que vous avez fait
   * avec un README.md, un requirements.txt, etc.
   * archive zip ou lien github
 * Par mail à antoine.richard@chu-lyon.fr avec:
   * En objet: le nom de l’UE et les noms/prénoms des membres de votre groupe
 
-/!\ Testez votre code avant, si je dois le bidouiller pour le faire tourner ça entrainera des points en moins /!\
+/!\ Testez votre code avant, si je dois le bidouiller pour le faire tourner ça entrainera des points en moins /!\\
