@@ -183,7 +183,8 @@ Vous pouvez consulter les sujets des précédents examens: [2022-2023](https://c
 
 Le contenu était légèrement différent et l'examen pourra être différent également.
 
-Dans la mesure du possible, l’examen sera composé à 60% (12pts) sur des exercices vus en cours, et à 40% (8pts) sur un exercice inconnu mais reprenant les notions vues en cours.
+L’objectif de l’examen est d’évaluer votre méthodologie et sera donc essentiellement composé d’exercice du type "vous êtes face à telle situation, qu’est-ce que vous faîtes ?".
+Il sera composé à 60% (12pts) d’exercices ciblés sur différentes notions travaillées en cours, et à 40% (8pts) sur un exercice plus libre.
 
 ### Projet
 
@@ -197,7 +198,7 @@ en exploitant les notions et méthodes vues en cours.
 
 Le repo github avec les données pour le projet est disponible ici: [20262027-UE-DataMining-Project](https://github.com/a-t-richard/20262027-UE-DataMining-Project)
 
-Date maximale de rendu du projet: **Dimanche 08/11/2026 23:59**
+Date maximale de rendu du projet: **Dimanche 15/11/2026 23:59**
 
 /!\ Chaque jour de retard entrainera des points en moins /!\\
 
